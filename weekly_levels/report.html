@@ -1,0 +1,204 @@
+<title>Недельные экстремумы BTC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6f8;--surface:#ffffff;--ink:#0f1720;--ink2:#4a5563;--muted:#7a8594;--line:#dfe4ea;--s1:#2a78d6;--s2:#eb6834;--s3:#4a3aa7;--s4:#b9c1cb;--up:#0b7a3e;--down:#c0342f;--upbg:#e3f4ea;--downbg:#fbe6e4;
+--f:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;--m:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1318;--surface:#171c22;--ink:#eef2f6;--ink2:#b3bdc9;--muted:#8591a0;--line:#2a323c;--s1:#3987e5;--s2:#d95926;--s3:#9085e9;--s4:#4b5561;--up:#4cc27f;--down:#ef7a73;--upbg:#153324;--downbg:#3a1c1b}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1318;--surface:#171c22;--ink:#eef2f6;--ink2:#b3bdc9;--muted:#8591a0;--line:#2a323c;--s1:#3987e5;--s2:#d95926;--s3:#9085e9;--s4:#4b5561;--up:#4cc27f;--down:#ef7a73;--upbg:#153324;--downbg:#3a1c1b}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--f);padding-inline:16px;padding-block:32px 64px}
+main{max-width:980px;margin:0 auto;display:grid;gap:40px}
+header{display:grid;gap:10px}
+.eyebrow{font:600 12px var(--m);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-size:22px;margin:0 0 4px;text-wrap:balance} h3{font-size:16px;margin:24px 0 8px}
+p{margin:0;max-width:68ch;color:var(--ink2)} .lead{font-size:17px}
+section{display:grid;gap:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:4px}
+.kpi b{font:600 28px var(--m);letter-spacing:-.02em} .kpi span{color:var(--ink2);font-size:13.5px;line-height:1.4}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.comp{display:flex;height:26px;gap:2px;border-radius:5px;overflow:hidden} .comp span{display:block}
+.s1{background:var(--s1)} .s2{background:var(--s2)} .s3{background:var(--s3)} .s4{background:var(--s4)}
+ul.leg{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px} ul.leg b{font-family:var(--m)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.chart{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:6px}
+figcaption{font-weight:600} .legend{display:flex;gap:16px;font-size:13px;color:var(--ink2);margin-bottom:4px}
+.pb-row{display:grid;grid-template-columns:28px 1fr;align-items:center;gap:8px} .pb-lab{font:13px var(--m);color:var(--ink2)}
+.pb-bars{display:grid;grid-template-columns:1fr 52px;row-gap:2px;align-items:center}
+.bar{height:9px;border-radius:0 3px 3px 0;min-width:2px} .bv{font:12px var(--m);color:var(--ink2);text-align:right}
+.tw{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th{text-align:left;font:600 11.5px var(--m);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding:10px 12px;border-bottom:1px solid var(--line)}
+td{padding:8px 12px;border-bottom:1px solid var(--line)} tr:last-child td{border-bottom:0}
+.num{font-family:var(--m);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap} th:not(:first-child){text-align:right}
+td.up{color:var(--up);background:var(--upbg)} td.down{color:var(--down);background:var(--downbg)}
+tr.base td{font-weight:600;background:color-mix(in srgb,var(--line) 35%,transparent)} tr.small td{color:var(--muted)}
+td small{color:var(--muted);font-family:var(--m)}
+.split{width:30%;min-width:120px} .split span{display:inline-block;height:8px;vertical-align:middle}
+.split .c,.split .c1{background:var(--s1)} .split .r,.split .c2{background:var(--s2)} .split .gap{background:transparent}
+.note{font-size:13.5px;color:var(--muted)}
+.take{display:grid;gap:10px;padding:0;margin:0;list-style:none;counter-reset:t}
+.take li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--ink2)} .take li b{color:var(--ink)}
+code{font-family:var(--m);font-size:.9em}
+</style>
+<main>
+<header>
+<div class="eyebrow">BTCUSDT · Binance spot · 2020-01-06 — 2026-08-30 · 338 недель · 863 сделки</div>
+<h1>Как цена работает с хаями и лоями недельных свечей</h1>
+<p class="lead">Неделя считается с понедельника 00:00 UTC. PWH/PWL — максимум и минимум прошлой недели. Котировки: 5-минутки Binance. Сделки распознаны со скриншотов репозитория (направление, вход, стоп, достигнутая цель) и сверены с котировками: все 863 входа попали в диапазон свечей.</p>
+</header>
+
+<section>
+<h2>Главное</h2>
+<div class="kpis">
+<div class="kpi"><b>53,6%</b><span>недель обновляют хай прошлой недели</span></div>
+<div class="kpi"><b>39,9%</b><span>недель обновляют лой прошлой недели</span></div>
+<div class="kpi"><b>8,0%</b><span>недель снимают обе стороны. Сняли одну — вторую добирают лишь в 8,3–10,7%</span></div>
+<div class="kpi"><b>~50%</b><span>пробоев удерживаются к закрытию недели: выше PWH 49,7%, ниже PWL 45,2%</span></div>
+</div>
+<ol class="take">
+<li><b>Уровень прошлой недели снимается рано.</b> Больше половины первых касаний PWH приходится на понедельник (98 из 181). Если к утру пятницы уровень не тронут, шанс снять его до конца недели около 9,8% для хая и 7,7% для лоя.</li>
+<li><b>Первое касание чаще продолжается, чем разворачивается.</b> После касания PWH цена в 66,3% случаев сначала уходит ещё на 0,5% выше, и лишь в 33,7% сначала откатывает на 0,5% вниз. По PWL картина та же. Типичный вынос за уровень — медиана 3,36% над PWH и 4,03% под PWL.</li>
+<li><b>Недельные хаи возвращаются быстрее лоев.</b> Медиана до повторного касания: 0,62 нед. для хаев и 1,10 нед. для лоев. За 26 недель перебивают 92,3% хаев и 78,8% лоев. Лои, не тронутые полгода, почти не возвращаются: 57 из 338 остаются голыми до сих пор.</li>
+<li><b>Для ваших сделок недельный уровень на пути к цели мешает.</b> Если хай/лой прошлой или текущей недели стоит в 1–2R от входа, винрейт 74,3% (выборка 35) против 84,4% в среднем; при уровне в 2–5R до TP4 доходит только 24–27% сделок (209 сделок) против 38,0%, когда уровень дальше 5R.</li>
+<li><b>Свип, который впервые за неделю снимает PWL/PWH, — лучший сетап, но их мало.</b> 12 сделок: винрейт 91,7%, TP4 в 58,3%, ср. 3,50R. Входы, когда цена уже давно торгуется за уровнем, хуже среднего: 2,14R.</li>
+</ol>
+</section>
+
+<section>
+<h2>1. Снятие уровней прошлой недели</h2>
+<div class="panel"><div class="comp" role="img" aria-label="Структура недель"><span class="s1" style="width:45.6%" title="Сняли только PWH: 45,6%"></span><span class="s2" style="width:32.0%" title="Сняли только PWL: 32,0%"></span><span class="s3" style="width:8.0%" title="Сняли обе стороны: 8,0%"></span><span class="s4" style="width:14.5%" title="Inside week — ни одной: 14,5%"></span></div><ul class="leg"><li><i class="sw s1"></i><b>45,6%</b> Сняли только PWH</li><li><i class="sw s2"></i><b>32,0%</b> Сняли только PWL</li><li><i class="sw s3"></i><b>8,0%</b> Сняли обе стороны</li><li><i class="sw s4"></i><b>14,5%</b> Inside week — ни одной</li></ul></div>
+<div class="tw"><table>
+<tr><th>Метрика</th><th>PWH (хай)</th><th>PWL (лой)</th></tr>
+<tr><td>Неделя сняла уровень</td><td class="num">53,6%</td><td class="num">39,9%</td></tr>
+<tr><td>…и закрылась за уровнем (пробой принят)</td><td class="num">49,7%</td><td class="num">45,2%</td></tr>
+<tr><td>…и закрылась обратно внутри (ложный пробой)</td><td class="num">50,3%</td><td class="num">54,8%</td></tr>
+<tr><td>Вынос за уровень, квартили 25 / 50 / 75</td><td class="num">1,67 / 3,36 / 7,36%</td><td class="num">1,87 / 4,03 / 8,01%</td></tr>
+<tr><td>После касания вернулась к середине прошлой недели</td><td class="num">32,0%</td><td class="num">40,7%</td></tr>
+<tr><td>Сняли первой — затем в ту же неделю сняли и вторую сторону</td><td class="num">8,3%</td><td class="num">10,7%</td></tr>
+</table></div>
+<p class="note">Когда за неделю снимают обе стороны, хай снимается первым в 51,9% случаев.</p>
+</section>
+
+<section>
+<h2>2. Реакция после первого касания</h2>
+<p>Гонка в пределах 72 часов от первого касания: что наступит раньше — продолжение на N% за уровень или разворот на N% обратно. Для случайной точки обе стороны близки к 50/50.</p>
+<div class="tw"><table><tr><th>Уровень</th><th>Порог</th><th>Продолжение</th><th>Разворот</th><th></th></tr><tr><td>PWH — хай прошлой недели</td><td class="num">±0,5%</td><td class="num">66,3%</td><td class="num">33,7%</td><td class="split"><span class="c" style="width:66.3%"></span><span class="r" style="width:33.7%"></span></td></tr><tr><td></td><td class="num">±1,0%</td><td class="num">61,3%</td><td class="num">38,7%</td><td class="split"><span class="c" style="width:61.3%"></span><span class="r" style="width:38.7%"></span></td></tr><tr><td></td><td class="num">±2,0%</td><td class="num">56,4%</td><td class="num">39,8%</td><td class="split"><span class="c" style="width:56.4%"></span><span class="r" style="width:39.8%"></span></td></tr><tr><td>PWL — лой прошлой недели</td><td class="num">±0,5%</td><td class="num">66,7%</td><td class="num">33,3%</td><td class="split"><span class="c" style="width:66.7%"></span><span class="r" style="width:33.3%"></span></td></tr><tr><td></td><td class="num">±1,0%</td><td class="num">58,5%</td><td class="num">41,5%</td><td class="split"><span class="c" style="width:58.5%"></span><span class="r" style="width:41.5%"></span></td></tr><tr><td></td><td class="num">±2,0%</td><td class="num">57,0%</td><td class="num">40,7%</td><td class="split"><span class="c" style="width:57.0%"></span><span class="r" style="width:40.7%"></span></td></tr><tr><td>Старый «голый» хай <small>n=148</small></td><td class="num">±0,5%</td><td class="num">64,9%</td><td class="num">35,1%</td><td class="split"><span class="c" style="width:64.9%"></span><span class="r" style="width:35.1%"></span></td></tr><tr><td></td><td class="num">±1,0%</td><td class="num">63,5%</td><td class="num">36,5%</td><td class="split"><span class="c" style="width:63.5%"></span><span class="r" style="width:36.5%"></span></td></tr><tr><td></td><td class="num">±2,0%</td><td class="num">61,5%</td><td class="num">36,5%</td><td class="split"><span class="c" style="width:61.5%"></span><span class="r" style="width:36.5%"></span></td></tr><tr><td>Старый «голый» лой <small>n=146</small></td><td class="num">±0,5%</td><td class="num">60,3%</td><td class="num">39,7%</td><td class="split"><span class="c" style="width:60.3%"></span><span class="r" style="width:39.7%"></span></td></tr><tr><td></td><td class="num">±1,0%</td><td class="num">56,2%</td><td class="num">43,8%</td><td class="split"><span class="c" style="width:56.2%"></span><span class="r" style="width:43.8%"></span></td></tr><tr><td></td><td class="num">±2,0%</td><td class="num">54,8%</td><td class="num">43,8%</td><td class="split"><span class="c" style="width:54.8%"></span><span class="r" style="width:43.8%"></span></td></tr></table></div>
+<p class="note">Синим — продолжение, оранжевым — разворот. «Голые» уровни — хай/лой недели, который никто не перебивал как минимум неделю после её закрытия (то есть не PWH/PWL, а более старые уровни).</p>
+</section>
+
+<section>
+<h2>3. Когда это происходит</h2>
+<div class="grid2">
+<figure class="chart"><figcaption>Первое касание PWH / PWL, число недель</figcaption>
+<div class="legend"><span><i class="sw s1"></i>PWH</span><span><i class="sw s2"></i>PWL</span></div><div class="pb-row"><span class="pb-lab">Пн</span><div class="pb-bars">
+<div class="bar s1" style="width:100.0%" title="PWH, Пн: 98"></div><span class="bv">98</span>
+<div class="bar s2" style="width:61.2%" title="PWL, Пн: 60"></div><span class="bv">60</span>
+</div></div><div class="pb-row"><span class="pb-lab">Вт</span><div class="pb-bars">
+<div class="bar s1" style="width:29.6%" title="PWH, Вт: 29"></div><span class="bv">29</span>
+<div class="bar s2" style="width:23.5%" title="PWL, Вт: 23"></div><span class="bv">23</span>
+</div></div><div class="pb-row"><span class="pb-lab">Ср</span><div class="pb-bars">
+<div class="bar s1" style="width:25.5%" title="PWH, Ср: 25"></div><span class="bv">25</span>
+<div class="bar s2" style="width:14.3%" title="PWL, Ср: 14"></div><span class="bv">14</span>
+</div></div><div class="pb-row"><span class="pb-lab">Чт</span><div class="pb-bars">
+<div class="bar s1" style="width:12.2%" title="PWH, Чт: 12"></div><span class="bv">12</span>
+<div class="bar s2" style="width:21.4%" title="PWL, Чт: 21"></div><span class="bv">21</span>
+</div></div><div class="pb-row"><span class="pb-lab">Пт</span><div class="pb-bars">
+<div class="bar s1" style="width:12.2%" title="PWH, Пт: 12"></div><span class="bv">12</span>
+<div class="bar s2" style="width:13.3%" title="PWL, Пт: 13"></div><span class="bv">13</span>
+</div></div><div class="pb-row"><span class="pb-lab">Сб</span><div class="pb-bars">
+<div class="bar s1" style="width:1.0%" title="PWH, Сб: 1"></div><span class="bv">1</span>
+<div class="bar s2" style="width:2.0%" title="PWL, Сб: 2"></div><span class="bv">2</span>
+</div></div><div class="pb-row"><span class="pb-lab">Вс</span><div class="pb-bars">
+<div class="bar s1" style="width:4.1%" title="PWH, Вс: 4"></div><span class="bv">4</span>
+<div class="bar s2" style="width:2.0%" title="PWL, Вс: 2"></div><span class="bv">2</span>
+</div></div></figure>
+<figure class="chart"><figcaption>В какой день ставится хай / лой недели, %</figcaption>
+<div class="legend"><span><i class="sw s1"></i>Максимум</span><span><i class="sw s2"></i>Минимум</span></div><div class="pb-row"><span class="pb-lab">Пн</span><div class="pb-bars">
+<div class="bar s1" style="width:77.7%" title="Максимум, Пн: 29,0%"></div><span class="bv">29,0%</span>
+<div class="bar s2" style="width:100.0%" title="Минимум, Пн: 37,3%"></div><span class="bv">37,3%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Вт</span><div class="pb-bars">
+<div class="bar s1" style="width:37.3%" title="Максимум, Вт: 13,9%"></div><span class="bv">13,9%</span>
+<div class="bar s2" style="width:30.0%" title="Минимум, Вт: 11,2%"></div><span class="bv">11,2%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Ср</span><div class="pb-bars">
+<div class="bar s1" style="width:35.7%" title="Максимум, Ср: 13,3%"></div><span class="bv">13,3%</span>
+<div class="bar s2" style="width:26.3%" title="Минимум, Ср: 9,8%"></div><span class="bv">9,8%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Чт</span><div class="pb-bars">
+<div class="bar s1" style="width:27.9%" title="Максимум, Чт: 10,4%"></div><span class="bv">10,4%</span>
+<div class="bar s2" style="width:29.2%" title="Минимум, Чт: 10,9%"></div><span class="bv">10,9%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Пт</span><div class="pb-bars">
+<div class="bar s1" style="width:30.0%" title="Максимум, Пт: 11,2%"></div><span class="bv">11,2%</span>
+<div class="bar s2" style="width:40.5%" title="Минимум, Пт: 15,1%"></div><span class="bv">15,1%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Сб</span><div class="pb-bars">
+<div class="bar s1" style="width:20.6%" title="Максимум, Сб: 7,7%"></div><span class="bv">7,7%</span>
+<div class="bar s2" style="width:11.8%" title="Минимум, Сб: 4,4%"></div><span class="bv">4,4%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Вс</span><div class="pb-bars">
+<div class="bar s1" style="width:38.9%" title="Максимум, Вс: 14,5%"></div><span class="bv">14,5%</span>
+<div class="bar s2" style="width:30.0%" title="Минимум, Вс: 11,2%"></div><span class="bv">11,2%</span>
+</div></div></figure>
+</div>
+<figure class="chart"><figcaption>Если к началу дня уровень ещё не тронут — шанс снять его до конца недели, %</figcaption>
+<div class="legend"><span><i class="sw s1"></i>PWH</span><span><i class="sw s2"></i>PWL</span></div><div class="pb-row"><span class="pb-lab">Пн</span><div class="pb-bars">
+<div class="bar s1" style="width:100.0%" title="PWH, Пн: 53,6%"></div><span class="bv">53,6%</span>
+<div class="bar s2" style="width:74.4%" title="PWL, Пн: 39,9%"></div><span class="bv">39,9%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Вт</span><div class="pb-bars">
+<div class="bar s1" style="width:64.6%" title="PWH, Вт: 34,6%"></div><span class="bv">34,6%</span>
+<div class="bar s2" style="width:50.4%" title="PWL, Вт: 27,0%"></div><span class="bv">27,0%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Ср</span><div class="pb-bars">
+<div class="bar s1" style="width:47.8%" title="PWH, Ср: 25,6%"></div><span class="bv">25,6%</span>
+<div class="bar s2" style="width:38.1%" title="PWL, Ср: 20,4%"></div><span class="bv">20,4%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Чт</span><div class="pb-bars">
+<div class="bar s1" style="width:29.1%" title="PWH, Чт: 15,6%"></div><span class="bv">15,6%</span>
+<div class="bar s2" style="width:29.5%" title="PWL, Чт: 15,8%"></div><span class="bv">15,8%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Пт</span><div class="pb-bars">
+<div class="bar s1" style="width:18.3%" title="PWH, Пт: 9,8%"></div><span class="bv">9,8%</span>
+<div class="bar s2" style="width:14.4%" title="PWL, Пт: 7,7%"></div><span class="bv">7,7%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Сб</span><div class="pb-bars">
+<div class="bar s1" style="width:5.8%" title="PWH, Сб: 3,1%"></div><span class="bv">3,1%</span>
+<div class="bar s2" style="width:3.5%" title="PWL, Сб: 1,9%"></div><span class="bv">1,9%</span>
+</div></div><div class="pb-row"><span class="pb-lab">Вс</span><div class="pb-bars">
+<div class="bar s1" style="width:4.7%" title="PWH, Вс: 2,5%"></div><span class="bv">2,5%</span>
+<div class="bar s2" style="width:1.9%" title="PWL, Вс: 1,0%"></div><span class="bv">1,0%</span>
+</div></div></figure>
+</section>
+
+<section>
+<h2>4. Возврат к старым недельным экстремумам</h2>
+<p>Доля недельных хаев и лоев, которые цена перебила в течение N недель после закрытия недели (учтены только уровни, у которых было хотя бы N недель).</p>
+<div class="tw"><table><tr><th>Горизонт</th><th>Хай перебит</th><th>Лой перебит</th><th>Хай ← → лой</th></tr><tr><td class="num">1 нед.</td><td class="num">53,4%</td><td class="num">40,1%</td><td class="split"><span class="c1" style="width:26.7%"></span><span class="gap" style="width:23.3%"></span><span class="c2" style="width:20.05%"></span></td></tr><tr><td class="num">2 нед.</td><td class="num">66,4%</td><td class="num">51,8%</td><td class="split"><span class="c1" style="width:33.2%"></span><span class="gap" style="width:16.799999999999997%"></span><span class="c2" style="width:25.9%"></span></td></tr><tr><td class="num">4 нед.</td><td class="num">77,2%</td><td class="num">62,3%</td><td class="split"><span class="c1" style="width:38.6%"></span><span class="gap" style="width:11.399999999999999%"></span><span class="c2" style="width:31.15%"></span></td></tr><tr><td class="num">8 нед.</td><td class="num">83,0%</td><td class="num">72,1%</td><td class="split"><span class="c1" style="width:41.5%"></span><span class="gap" style="width:8.5%"></span><span class="c2" style="width:36.05%"></span></td></tr><tr><td class="num">13 нед.</td><td class="num">88,6%</td><td class="num">74,5%</td><td class="split"><span class="c1" style="width:44.3%"></span><span class="gap" style="width:5.700000000000003%"></span><span class="c2" style="width:37.25%"></span></td></tr><tr><td class="num">26 нед.</td><td class="num">92,3%</td><td class="num">78,8%</td><td class="split"><span class="c1" style="width:46.15%"></span><span class="gap" style="width:3.8500000000000014%"></span><span class="c2" style="width:39.4%"></span></td></tr><tr><td class="num">52 нед.</td><td class="num">95,5%</td><td class="num">79,4%</td><td class="split"><span class="c1" style="width:47.75%"></span><span class="gap" style="width:2.25%"></span><span class="c2" style="width:39.7%"></span></td></tr></table></div>
+<p class="note">Асимметрия — следствие бычьего тренда BTC за период: 2020–2026 рост с ~7 тыс. до ~80–120 тыс.</p>
+</section>
+
+<section>
+<h2>5. Сделки и недельные уровни</h2>
+<p>Результат — максимальная цель со скриншота: SL = −1R, TP1 = 1R, TP2 = 2R, TP3 = 4R, TP4 = 5R. Средний R посчитан по этой шкале без учёта частичных фиксаций. Зелёным и красным отмечены отклонения от среднего (≥3 п.п., ≥0,15R) в группах от 40 сделок; серые строки — выборка меньше 40, это ориентир, не вывод.</p>
+<h3>Свип и уровень прошлой недели</h3><p class=note>Свип — окно 3 часа до входа. Лонг смотрит на PWL, шорт на PWH.</p><div class="tw"><table class="tt">
+<tr><th>Группа</th><th>n</th><th>Win</th><th>SL</th><th>≥TP2</th><th>TP4 (5R)</th><th>Ср. R</th></tr>
+<tr class="base"><td>Все сделки</td><td class="num">863</td><td class="num">84,4%</td><td class="num">15,6%</td><td class="num">60,8%</td><td class="num">32,7%</td><td class="num">2,42</td></tr><tr class=small><td>Свип PWL/PWH — первое снятие за неделю</td><td class="num">12</td><td class="num">91,7%</td><td class="num">8,3%</td><td class="num">75,0%</td><td class="num">58,3%</td><td class="num">3,50</td></tr><tr class=small><td>Свип PWL/PWH — повторный (уже снимали на неделе)</td><td class="num">33</td><td class="num">84,8%</td><td class="num">15,2%</td><td class="num">60,6%</td><td class="num">30,3%</td><td class="num">2,33</td></tr><tr><td>Цена уже торгуется за PWL/PWH</td><td class="num">139</td><td class="num down">80,6%</td><td class="num down">19,4%</td><td class="num down">56,1%</td><td class="num down">25,9%</td><td class="num down">2,14</td></tr><tr><td>Свип не касался PWL/PWH</td><td class="num">679</td><td class="num">85,0%</td><td class="num">15,0%</td><td class="num">61,6%</td><td class="num">33,7%</td><td class="num">2,46</td></tr></table></div>
+<h3>Ближайший недельный экстремум на пути к цели</h3><p class=note>Расстояние в R от входа до хая/лоя прошлой недели или уже поставленного экстремума текущей недели по направлению сделки.</p><div class="tw"><table class="tt">
+<tr><th>Группа</th><th>n</th><th>Win</th><th>SL</th><th>≥TP2</th><th>TP4 (5R)</th><th>Ср. R</th></tr>
+<tr class="base"><td>Все сделки</td><td class="num">863</td><td class="num">84,4%</td><td class="num">15,6%</td><td class="num">60,8%</td><td class="num">32,7%</td><td class="num">2,42</td></tr><tr class=small><td>&lt;1R</td><td class="num">17</td><td class="num">82,4%</td><td class="num">17,6%</td><td class="num">58,8%</td><td class="num">41,2%</td><td class="num">2,59</td></tr><tr class=small><td>1–2R</td><td class="num">35</td><td class="num">74,3%</td><td class="num">25,7%</td><td class="num">54,3%</td><td class="num">31,4%</td><td class="num">2,03</td></tr><tr><td>2–4R</td><td class="num">119</td><td class="num">81,5%</td><td class="num">18,5%</td><td class="num down">55,5%</td><td class="num down">24,4%</td><td class="num down">2,13</td></tr><tr><td>4–5R</td><td class="num">90</td><td class="num">86,7%</td><td class="num">13,3%</td><td class="num down">53,3%</td><td class="num down">26,7%</td><td class="num down">2,16</td></tr><tr><td>5–8R</td><td class="num">200</td><td class="num">85,5%</td><td class="num">14,5%</td><td class="num up">64,5%</td><td class="num up">38,0%</td><td class="num up">2,63</td></tr><tr><td>&gt;8R / нет</td><td class="num">402</td><td class="num">85,1%</td><td class="num">14,9%</td><td class="num">62,9%</td><td class="num">33,6%</td><td class="num">2,48</td></tr></table></div>
+<h3>Контекст недели на момент входа</h3><div class="tw"><table class="tt">
+<tr><th>Группа</th><th>n</th><th>Win</th><th>SL</th><th>≥TP2</th><th>TP4 (5R)</th><th>Ср. R</th></tr>
+<tr class="base"><td>Все сделки</td><td class="num">863</td><td class="num">84,4%</td><td class="num">15,6%</td><td class="num">60,8%</td><td class="num">32,7%</td><td class="num">2,42</td></tr><tr><td>Внутри диапазона прошлой недели</td><td class="num">294</td><td class="num">85,4%</td><td class="num">14,6%</td><td class="num">62,6%</td><td class="num">33,7%</td><td class="num">2,52</td></tr><tr><td>Уже снята сторона ПРОТИВ направления</td><td class="num">288</td><td class="num">83,7%</td><td class="num">16,3%</td><td class="num">63,5%</td><td class="num">34,4%</td><td class="num">2,49</td></tr><tr><td>Уже снята сторона ПО направлению</td><td class="num">247</td><td class="num">83,0%</td><td class="num">17,0%</td><td class="num down">55,5%</td><td class="num">30,4%</td><td class="num down">2,23</td></tr><tr class=small><td>Сняты обе</td><td class="num">34</td><td class="num">91,2%</td><td class="num">8,8%</td><td class="num">61,8%</td><td class="num">26,5%</td><td class="num">2,35</td></tr></table></div>
+<h3>Позиция входа в диапазоне прошлой недели</h3><p class=note>0% — уровень «своей» стороны (PWL для лонга, PWH для шорта), 100% — противоположный.</p><div class="tw"><table class="tt">
+<tr><th>Группа</th><th>n</th><th>Win</th><th>SL</th><th>≥TP2</th><th>TP4 (5R)</th><th>Ср. R</th></tr>
+<tr class="base"><td>Все сделки</td><td class="num">863</td><td class="num">84,4%</td><td class="num">15,6%</td><td class="num">60,8%</td><td class="num">32,7%</td><td class="num">2,42</td></tr><tr><td>за уровнем (&lt;0)</td><td class="num">171</td><td class="num">82,5%</td><td class="num">17,5%</td><td class="num">58,5%</td><td class="num">29,8%</td><td class="num">2,28</td></tr><tr><td>0–25%</td><td class="num">158</td><td class="num">85,4%</td><td class="num">14,6%</td><td class="num">60,8%</td><td class="num">31,0%</td><td class="num">2,46</td></tr><tr><td>25–50%</td><td class="num">184</td><td class="num">81,5%</td><td class="num">18,5%</td><td class="num up">64,7%</td><td class="num">32,6%</td><td class="num">2,39</td></tr><tr><td>50–75%</td><td class="num">160</td><td class="num">86,9%</td><td class="num">13,1%</td><td class="num">59,4%</td><td class="num up">36,2%</td><td class="num">2,51</td></tr><tr><td>75–100%</td><td class="num">89</td><td class="num">86,5%</td><td class="num">13,5%</td><td class="num up">64,0%</td><td class="num">34,8%</td><td class="num up">2,60</td></tr><tr><td>за противоп. (&gt;100%)</td><td class="num">101</td><td class="num">85,1%</td><td class="num">14,9%</td><td class="num down">57,4%</td><td class="num">32,7%</td><td class="num">2,36</td></tr></table></div>
+<h3>Свип обновил экстремум текущей недели</h3><div class="tw"><table class="tt">
+<tr><th>Группа</th><th>n</th><th>Win</th><th>SL</th><th>≥TP2</th><th>TP4 (5R)</th><th>Ср. R</th></tr>
+<tr class="base"><td>Все сделки</td><td class="num">863</td><td class="num">84,4%</td><td class="num">15,6%</td><td class="num">60,8%</td><td class="num">32,7%</td><td class="num">2,42</td></tr><tr><td>Свип обновил экстремум текущей недели</td><td class="num">178</td><td class="num">85,4%</td><td class="num">14,6%</td><td class="num up">65,7%</td><td class="num">31,5%</td><td class="num">2,47</td></tr><tr><td>Нет</td><td class="num">685</td><td class="num">84,1%</td><td class="num">15,9%</td><td class="num">59,6%</td><td class="num">33,0%</td><td class="num">2,41</td></tr></table></div>
+<h3>Свип снял «голый» старый недельный экстремум</h3><div class="tw"><table class="tt">
+<tr><th>Группа</th><th>n</th><th>Win</th><th>SL</th><th>≥TP2</th><th>TP4 (5R)</th><th>Ср. R</th></tr>
+<tr class="base"><td>Все сделки</td><td class="num">863</td><td class="num">84,4%</td><td class="num">15,6%</td><td class="num">60,8%</td><td class="num">32,7%</td><td class="num">2,42</td></tr><tr class=small><td>Свип снял «голый» недельный экстремум (≤26 нед.)</td><td class="num">17</td><td class="num">88,2%</td><td class="num">11,8%</td><td class="num">70,6%</td><td class="num">47,1%</td><td class="num">3,00</td></tr><tr><td>Нет</td><td class="num">846</td><td class="num">84,3%</td><td class="num">15,7%</td><td class="num">60,6%</td><td class="num">32,4%</td><td class="num">2,41</td></tr></table></div>
+<h3>День недели входа</h3><div class="tw"><table class="tt">
+<tr><th>Группа</th><th>n</th><th>Win</th><th>SL</th><th>≥TP2</th><th>TP4 (5R)</th><th>Ср. R</th></tr>
+<tr class="base"><td>Все сделки</td><td class="num">863</td><td class="num">84,4%</td><td class="num">15,6%</td><td class="num">60,8%</td><td class="num">32,7%</td><td class="num">2,42</td></tr><tr><td>Пн</td><td class="num">124</td><td class="num">87,1%</td><td class="num">12,9%</td><td class="num">63,7%</td><td class="num up">37,1%</td><td class="num up">2,69</td></tr><tr><td>Вт</td><td class="num">113</td><td class="num">86,7%</td><td class="num">13,3%</td><td class="num">61,9%</td><td class="num">33,6%</td><td class="num">2,47</td></tr><tr><td>Ср</td><td class="num">114</td><td class="num">83,3%</td><td class="num">16,7%</td><td class="num">63,2%</td><td class="num down">28,9%</td><td class="num">2,36</td></tr><tr><td>Чт</td><td class="num">123</td><td class="num">85,4%</td><td class="num">14,6%</td><td class="num up">64,2%</td><td class="num">34,1%</td><td class="num">2,55</td></tr><tr><td>Пт</td><td class="num">113</td><td class="num">84,1%</td><td class="num">15,9%</td><td class="num">62,8%</td><td class="num">30,1%</td><td class="num">2,30</td></tr><tr><td>Сб</td><td class="num">112</td><td class="num">84,8%</td><td class="num">15,2%</td><td class="num">60,7%</td><td class="num">33,9%</td><td class="num">2,45</td></tr><tr><td>Вс</td><td class="num">164</td><td class="num down">80,5%</td><td class="num down">19,5%</td><td class="num down">52,4%</td><td class="num">31,1%</td><td class="num down">2,19</td></tr></table></div>
+</section>
+
+<section>
+<h2>Методика</h2>
+<p>Данные: 5-минутные свечи BTCUSDT с data.binance.vision, время UTC; время на скриншотах с ним совпадает. Сделки распознаны OCR из заголовков и подписей уровней на графиках, пять нечитаемых графиков разобраны вручную. Разница в 3–5 п.п. винрейта на группах в 100–300 сделок лежит в пределах статистического шума (±4–6 п.п.), поэтому уверенно можно говорить только о крупных отклонениях. Скрипты и таблица всех сделок с признаками лежат в папке <code>weekly_levels/</code> репозитория.</p>
+</section>
+</main>
