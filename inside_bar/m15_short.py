@@ -4,7 +4,9 @@
 верха зоны. Новый лой ниже экстремума — сброс (зона и FVG пересчитываются). Окно 4 недели от снятия.
 Выход: стоп над локальным хаем; цели — лой манипуляции и L−1R; если стоп и цель в одной 15m — стоп.
 python m15_short.py <dir_pkl> <events.csv> <out.csv> [SYM]"""
-import sys, numpy as np, pandas as pd
+import sys, os, numpy as np, pandas as pd
+# TRIGGER=shift: сигнал — закрытие M15 ниже последнего фрактального минимума (2+2 свечи) перед локальным хаем
+TRIGGER = os.environ.get('TRIGGER', 'fvg')
 SRC, EV, OUT = sys.argv[1:4]
 SYM = sys.argv[4] if len(sys.argv) > 4 else None
 E = pd.read_csv(EV); E = E[~E.open] if 'open' in E else E
@@ -56,7 +58,14 @@ for e in E.itertuples():
         if i <= lh_i: continue
         # последний восходящий M15 FVG до локального хая, сформирован после лоя, не перекрыт до хая
         bot = None
-        for k in range(lh_i, max(ext_i + 2, lh_i - 400), -1):
+        if TRIGGER == 'shift':
+            for k in range(lh_i - 1, max(ext_i + 1, lh_i - 400), -1):
+                if k + 2 >= i or k - 2 < 0: continue                       # фрактал должен быть подтверждён
+                if l[k] < l[k - 1] and l[k] < l[k - 2] and l[k] <= l[k + 1] and l[k] <= l[k + 2]:
+                    if (c[k + 1:lh_i + 1] < l[k]).any(): continue           # уже пробит до хая
+                    bot = l[k]; kbot = k + 2; break
+        else:
+          for k in range(lh_i, max(ext_i + 2, lh_i - 400), -1):
             if l[k] > h[k - 2]:
                 if (c[k + 1:lh_i + 1] < h[k - 2]).any(): continue
                 bot = h[k - 2]; kbot = k; break
