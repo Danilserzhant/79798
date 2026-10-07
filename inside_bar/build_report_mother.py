@@ -192,6 +192,32 @@ wi_section = f'''<section>
 <p class="note">Из текущего состояния сигнал был в 14 случаях — точность около ±20 п.п. Колонка от первого снятия надёжнее по объёму, но в ней есть и случаи с меньшим выносом под уровень, чем у ETH сейчас.</p>
 </section>'''
 
+def wc(name, v):
+    d = pd.read_csv(f'results/mother/p_wc_{name}_{v}.csv'); return d[d['sample'] == 'low'].iloc[0]
+WS = json.load(open('results/mother/wc_wi_state_summary.json'))['low']; WFs = json.load(open('results/mother/wc_wi_first_summary.json'))['low']
+a1, a2, b1, b2 = wc('wi_state', 'sig'), wc('wi_state', 'wk'), wc('wi_first', 'sig'), wc('wi_first', 'wk')
+def wcrow(label, k):
+    return f'<tr><td>{label}</td><td class="num big">{f(a1[k],0)}%</td><td class="num">{f(a2[k],0)}%</td><td class="num big">{f(b1[k],0)}%</td><td class="num">{f(b2[k],0)}%</td></tr>'
+wc_section = f'''<section>
+<h2>С подтверждением недельным закрытием</h2>
+<p>Ещё одно правило: после сигнала неделя, в которой он случился, должна закрыться выше лоя инсайда (2634). Иначе сетап отменяется. Вероятности посчитаны от двух точек: от момента сигнала (если он прошёл фильтр) и от недельного закрытия — это реальная точка входа, если ждать закрытия.</p>
+<div class="tw"><table>
+<tr><th>Воронка</th><th>Из текущего состояния</th><th>От первого снятия лоя матери</th></tr>
+<tr><td>Сигнал случился</td><td class="num">15%</td><td class="num">37%</td></tr>
+<tr><td>…из них неделя закрылась выше лоя инсайда</td><td class="num">{f(WS["wk_close_above_ib"],0)}%</td><td class="num">{f(WFs["wk_close_above_ib"],0)}%</td></tr>
+<tr><td><b>Сетап полностью подтверждён</b></td><td class="num big">{f(int(a1.n)/NLOW*100,0)}% ({int(a1.n)} из {NLOW})</td><td class="num big">{f(int(b1.n)/NFIRST*100,0)}% ({int(b1.n)} из {NFIRST})</td></tr>
+<tr><td>…хай матери уже взят до недельного закрытия</td><td class="num">{f(WS["of_ok_H_already_before_close"],0)}%</td><td class="num">{f(WFs["of_ok_H_already_before_close"],0)}%</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>После подтверждённого сетапа</th><th>Текущее · от сигнала</th><th>Текущее · от закрытия недели</th><th>Первое снятие · от сигнала</th><th>Первое снятие · от закрытия недели</th></tr>
+{wcrow('Хай матери 2807 раньше нового лоя', 'H_before_newlow')}
+{wcrow('Дойдёт до хая матери за 4 недели', 'reach_H')}
+{wcrow('Дойдёт до L − 1R (2445)', 'reach_E1')}
+{wcrow('Обновит лой манипуляции за 4 недели', 'newlow')}
+</table></div>
+<p class="note">Из текущего состояния подтверждённых случаев {int(a1.n)} — это ориентир с точностью около ±20 п.п. Большая выборка (от первого снятия, {int(b1.n)} случаев) даёт консервативную оценку.</p>
+</section>'''
+
 page = f'''<title>ETH: материнская неделя</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -245,6 +271,8 @@ page = f'''<title>ETH: материнская неделя</title>
 {ib_section}
 
 {wi_section}
+
+{wc_section}
 
 <section>
 <h2>Методика и оговорки</h2>

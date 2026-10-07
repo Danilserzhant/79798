@@ -1,0 +1,14 @@
+{
+ "all": {
+  "n_signals": 191,
+  "wk_close_above_ib": 72.8,
+  "of_ok_H_already_before_close": 16.5,
+  "of_ok_mid_already_before_close": 64.0
+ },
+ "low": {
+  "n_signals": 97,
+  "wk_close_above_ib": 75.3,
+  "of_ok_H_already_before_close": 21.9,
+  "of_ok_mid_already_before_close": 57.5
+ }
+}
