@@ -15,3 +15,8 @@ python conf_stats.py out/trades.csv out/conf.pkl
 python build_report.py                                    # из results/
 ```
 15m свечи: data.binance.vision `futures/um/{monthly,daily}/klines/<SYM>/15m` (загрузка аналогична `weekly_levels/fetch_data.py`).
+
+## Материнская неделя (текущий `report.html`)
+Уровни берутся с недели перед инсайдом: `RANGE=mother python ib_study.py ...`.
+Результаты — `results/mother/`; таблицы с бутстрап-интервалами — `conf_ci.py`; отчёт — `build_report_mother.py`.
+Отчёт по диапазону самого инсайда собирается `build_report.py` из `results/`.

@@ -13,6 +13,8 @@ SRC, OUT = sys.argv[1], sys.argv[2]
 # опционально: X — искать подтверждения не от первого касания L, а от момента, когда
 # вынос под L >= X·R, снят лой матери и хай IB не тронут (как сейчас на ETH)
 STATE_X = float(sys.argv[3]) if len(sys.argv) > 3 else None
+# RANGE=mother: уровни берутся с материнской недели (L/H матери), иначе — с самого инсайда
+MODE = os.environ.get('RANGE', 'ib')
 os.makedirs(OUT, exist_ok=True)
 COST = 0.001          # 0,1% цены на сделку туда-обратно (комиссия taker x2 + проскальзывание)
 MAXWAIT_BREAK = pd.Timedelta(weeks=8)
@@ -74,7 +76,7 @@ for f in sorted(os.listdir(SRC)):
             mo, ib = Wm.iloc[i - 1], Wm.iloc[i]
             if not (ib.h <= mo.h and ib.l >= mo.l): continue
             t_ib_end = Wm.index[i] + pd.Timedelta(weeks=1)
-            L, H = ib.l, ib.h; R = H - L
+            L, H = (mo.l, mo.h) if MODE == 'mother' else (ib.l, ib.h); R = H - L
             if R <= 0: continue
             fut = m.loc[t_ib_end:t_ib_end + MAXWAIT_BREAK]
             bl = np.nonzero(fut.l.values < L)[0]; bh = np.nonzero(fut.h.values > H)[0]
