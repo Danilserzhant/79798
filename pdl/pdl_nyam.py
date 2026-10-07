@@ -44,7 +44,7 @@ for sym in SYMS:
                         top = lv[k - 2]; kk = k; break
                 if top is None: continue
                 if cv[j] > top and not (cv[x + 1:j] > top).any():
-                    sig = j; break
+                    sig = j; fvg_top, fvg_bot, fvg_t = top, hv[kk], hi[kk]; break
             if sig is None:
                 r['status'] = 'инвалидация' if 'inval_t' in r else 'нет сигнала'; rows.append(r); continue
             tE = hi[sig] + pd.Timedelta('1h'); entry = cv[sig]
@@ -58,6 +58,22 @@ for sym in SYMS:
             iS = first(fl <= stop); cost = COST * abs(entry) / risk
             r.update(status='сделка', t_entry=str(tE), entry=entry * (1 if side == 'low' else -1), risk_pct=risk / abs(entry) * 100,
                      hours_to_signal=(tE - t_sw).total_seconds() / 3600, sweep_depth_pct=(PDL - sweep_low) / abs(PDL) * 100)
+            # диагностика
+            pre = D.iloc[max(0, d - 6):d]
+            r.update(pos_in_pd=(entry - PDL) / (PDH - PDL) if PDH > PDL else np.nan,
+                     entry_vs_pdl_R=(entry - PDL) / risk, fvg_top_vs_pdl_pct=(fvg_top - PDL) / abs(PDL) * 100,
+                     fvg_size_pct=(fvg_top - fvg_bot) / abs(PDL) * 100, fvg_age_h=(hi[x] - fvg_t).total_seconds() / 3600,
+                     prev_day_bull=bool(D.c.iloc[d - 1] > D.c.iloc[d - 2]) if d >= 2 else None,
+                     trend5=float((D.c.iloc[d - 1] - D.c.iloc[d - 6]) / abs(D.c.iloc[d - 6]) * 100) if d >= 6 else np.nan,
+                     pd_range_pct=(PDH - PDL) / abs(PDL) * 100, sig_same_day=bool(tE <= day + pd.Timedelta('1D')),
+                     sig_ny=bool(ny_am(hi[sig])), sig_hour_et=int(hi[sig].tz_localize('UTC').tz_convert('America/New_York').hour))
+            iS_ = iS if iS < 10**9 else len(fh) - 1
+            r['mfe_R'] = (fh[:iS_ + 1].max() - entry) / risk if iS_ >= 0 and len(fh) else np.nan
+            r['new_low_after'] = bool(len(fl) and fl.min() < sweep_low)
+            # после стопа: ушла ли цена ниже ещё на 1R (продолжение) и вернулась ли к PDH
+            if iS < 10**9:
+                ah, al = fh[iS:], fl[iS:]
+                r['after_stop_down1R'] = bool((al <= stop - risk).any()); r['after_stop_pdh'] = bool((ah >= PDH).any())
             for nm, tgt in (('1R', entry + risk), ('2R', entry + 2 * risk), ('PDH', PDH)):
                 if tgt <= entry: r[f'win_{nm}'] = None; r[f'net_{nm}'] = None; r[f'rr_{nm}'] = None; continue
                 iT = first(fh >= tgt); rr = (tgt - entry) / risk; win = iT < iS
