@@ -19,6 +19,30 @@ def state(h, l, c, PH, PL):
     if h > PH: return 'отказ сверху'
     if l < PL: return 'отказ снизу'
     return 'внутри'
+def manage(H, L, C, i, e0, entry, stop, tgt):
+    """R по вариантам сопровождения (без комиссии). Части: [(доля, цель в R или None=цель BIAS)], be_after — после какой части стоп в БУ."""
+    risk = entry - stop; rT = (tgt - entry) / risk
+    plans = {'A': ([(1, None)], None), 'B': ([(.5, 1), (.5, None)], 0), 'C': ([(.5, 2), (.5, None)], 0),
+             'D': ([(1/3, 1), (1/3, 2), (1/3, None)], 0), 'E': ([(1, 1)], None), 'F': ([(1, 2)], None)}
+    out = {}
+    for nm, (parts, be) in plans.items():
+        lv = [(w, min(r, rT) if r is not None else rT) for w, r in parts]
+        lv = sorted(lv, key=lambda z: z[1]); done = [False] * len(lv); res = 0.0; sl = -1.0; be_on = False
+        for q in range(i + 1, e0):
+            lo, hi = (L[q] - entry) / risk, (H[q] - entry) / risk
+            if lo <= sl:
+                res += sum(w for (w, _), d in zip(lv, done) if not d) * sl; done = [True] * len(lv); break
+            hit_any = False
+            for z, (w, r) in enumerate(lv):
+                if not done[z] and hi >= r:
+                    res += w * r; done[z] = True; hit_any = True
+                    if be is not None and z == be: be_on = True
+            if all(done): break
+            if be_on: sl = 0.0
+        if not all(done):
+            res += sum(w for (w, _), d in zip(lv, done) if not d) * (C[e0 - 1] - entry) / risk
+        out['m' + nm] = res
+    return out
 def first(mask, off=0):
     j = np.flatnonzero(mask); return off + j[0] if len(j) else INF
 rows = []
@@ -84,6 +108,7 @@ for s in SYMS:
                 rows.append(dict(sym=s, P=P, mirror=mirror, group=grp, state=st, t=T[i], hour=pd.Timestamp(T[i]).hour, rr=rr,
                                  R=res - COST * abs(entry) / risk, win=res == rr, stopped=res == -1.0, risk_pct=risk / abs(entry),
                                  fvg_pos=(top - INV) / (TGT - INV), fvg_size_pct=(top - bot) / abs(entry),
-                                 ext_in_fvg=bool(stop >= bot), wait_bars=i - tch))
+                                 ext_in_fvg=bool(stop >= bot), wait_bars=i - tch,
+                                 **{k: v - COST * abs(entry) / risk for k, v in manage(H, L, C, i, e0, entry, stop, TGT).items()}))
     print(s, len(rows), flush=True)
 pd.DataFrame(rows).to_csv(OUT, index=False)
