@@ -170,6 +170,28 @@ ib_section = f'''<section>
 </ol>
 </section>'''
 
+WI = pd.read_csv('results/mother/p_wi_state.csv'); WI = WI[(WI['sample'] == 'low') & WI.conf.str.startswith('Инверсия H4')].iloc[0]
+WF = pd.read_csv('results/mother/p_wi_first.csv'); WF = WF[(WF['sample'] == 'low') & WF.conf.str.startswith('Инверсия H4')].iloc[0]
+wi_section = f'''<section>
+<h2>С отменой по недельному закрытию</h2>
+<p>Правило отмены: если неделя закрылась ниже лоя инсайда (2634) раньше, чем случилась инверсия H4 FVG, сетап отменяется. Если неделя закрылась выше, ждём дальше, но не больше 4 недель.</p>
+<div class="tw"><table>
+<tr><th>Исход</th><th>Из текущего состояния (95)</th><th>От первого снятия лоя матери (255)</th></tr>
+<tr><td>Сигнал до закрытия этой недели</td><td class="num">14%</td><td class="num">—</td></tr>
+<tr><td>Сигнал случился (всего)</td><td class="num big">15%</td><td class="num big">37%</td></tr>
+<tr><td>Отмена закрытием этой недели ниже 2634</td><td class="num">69%</td><td class="num">—</td></tr>
+<tr><td>Отмена (всего)</td><td class="num">85%</td><td class="num">63%</td></tr>
+<tr class="base"><td colspan="3">Если сигнал случился</td></tr>
+<tr><td>Хай матери 2807 раньше нового лоя</td><td class="num big">{f(WI.H_before_newlow,0)}%</td><td class="num big">{f(WF.H_before_newlow,0)}%</td></tr>
+<tr><td>Дойдёт до хая матери за 4 недели</td><td class="num">{f(WI.reach_H,0)}%</td><td class="num">{f(WF.reach_H,0)}%</td></tr>
+<tr><td>Середина матери 2716 раньше нового лоя</td><td class="num">{f(WI.mid_before_newlow,0)}%</td><td class="num">{f(WF.mid_before_newlow,0)}%</td></tr>
+<tr><td>Неделя закроется выше лоя матери</td><td class="num">{f(WI.wk_close_inside,0)}%</td><td class="num">{f(WF.wk_close_inside,0)}%</td></tr>
+<tr><td>Дойдёт до лой матери − 1R (2445)</td><td class="num">{f(WI.reach_E1,0)}%</td><td class="num">{f(WF.reach_E1,0)}%</td></tr>
+<tr><td>Обновит лой манипуляции за 4 недели</td><td class="num">{f(WI.newlow,0)}%</td><td class="num">{f(WF.newlow,0)}%</td></tr>
+</table></div>
+<p class="note">Из текущего состояния сигнал был в 14 случаях — точность около ±20 п.п. Колонка от первого снятия надёжнее по объёму, но в ней есть и случаи с меньшим выносом под уровень, чем у ETH сейчас.</p>
+</section>'''
+
 page = f'''<title>ETH: материнская неделя</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -221,6 +243,8 @@ page = f'''<title>ETH: материнская неделя</title>
 {ifvg_section}
 
 {ib_section}
+
+{wi_section}
 
 <section>
 <h2>Методика и оговорки</h2>

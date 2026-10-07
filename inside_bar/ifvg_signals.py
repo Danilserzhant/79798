@@ -10,6 +10,8 @@ X = float(sys.argv[4]) if len(sys.argv) > 4 and sys.argv[4] != '-' else None
 # SELECT: last — последний FVG; ib — последний FVG, у которого верх >= лоя инсайда (на уровне или выше);
 #         mother — то же относительно лоя матери
 SELECT = sys.argv[5] if len(sys.argv) > 5 else 'last'
+# wkinval: сетап отменяется закрытием недели ниже лоя инсайда до сигнала; иначе ждём до 4 недель
+WKINVAL = len(sys.argv) > 6 and sys.argv[6] == 'wkinval'
 E = pd.read_csv(EV)
 TFS = {'H4': '4h', 'H1': '1h', 'D1': '1D'}
 LOOKBACK = {'H4': 42, 'H1': 168, 'D1': 10}       # ≈7 дней (D1 — 10 дней)
@@ -17,7 +19,7 @@ if SELECT != 'last': LOOKBACK = {'H4': 84, 'H1': 336, 'D1': 14}   # уровен
 WIN = pd.Timedelta(days=7)
 def agg(df, rule):
     return df.resample(rule, label='left', closed='left').agg(h=('h', 'max'), l=('l', 'min'), c=('c', 'last')).dropna()
-cache, rows, current = {}, [], []
+cache, rows, current, status = {}, [], [], []
 for e in E.itertuples():
     if (e.sym, e.side) not in cache:
         raw = pd.read_pickle(f'{SRC}/{e.sym}.pkl')
@@ -36,6 +38,17 @@ for e in E.itertuples():
         ok = np.nonzero((np.minimum.accumulate(a1.l.values) <= L - X * R) & (np.maximum.accumulate(a1.h.values) < H))[0]
         if not len(ok): continue
         anchor = a1.index[ok[0]]
+    win_end = anchor + WIN; inval = None
+    if WKINVAL:
+        win_end = anchor + pd.Timedelta(weeks=4)
+        wk = t0.normalize() - pd.Timedelta(days=t0.dayofweek)
+        while wk + pd.Timedelta(weeks=1) <= m.index[-1] + pd.Timedelta('15min'):
+            we = wk + pd.Timedelta(weeks=1)
+            if we > anchor and m.c.loc[:we - pd.Timedelta('15min')].iloc[-1] < ib_l:
+                inval = we; break
+            wk = we
+            if wk > win_end: break
+        if inval is not None: win_end = min(win_end, inval)
     for tf, b in fr.items():
         off = pd.Timedelta(TFS[tf])
         hv, lv, cv, idx = b.h.values, b.l.values, b.c.values, b.index
@@ -44,7 +57,7 @@ for e in E.itertuples():
         for j in range(max(j0, 2), len(b)):
             tclose = idx[j] + off
             if tclose <= anchor: continue
-            if tclose > anchor + WIN: break
+            if tclose > win_end: break
             x = j0 + int(np.argmin(lv[j0:j + 1]))                # бар экстремума на текущий момент
             if x == j: last_info = None; continue                 # экстремум только что обновлён
             top = None
@@ -62,6 +75,9 @@ for e in E.itertuples():
         if e.open and X is not None:
             current.append(dict(sym=e.sym, side=e.side, tf=tf, fvg_top=sg * last_info[0] if last_info else None,
                                 fvg_bar=str(last_info[1]) if last_info else None, signal=str(sig)))
+        if tf == 'H4':
+            status.append(dict(sym=e.sym, side=e.side, ib_week=e.ib_week, open=bool(e.open), t0=str(t0), inval=str(inval), sig=str(sig),
+                               status='signal' if sig is not None else ('invalidated' if inval is not None else ('open' if e.open else 'expired'))))
         if sig is not None:
             if SELECT == 'ib':
                 where = 'FVG на уровне инсайда' if last_info[2] <= ib_l else 'FVG выше лоя инсайда'
@@ -70,6 +86,7 @@ for e in E.itertuples():
             rows.append(dict(sym=e.sym, side=e.side, ib_week=e.ib_week, conf=f'Инверсия {tf} FVG' + {'last': ' (последний)', 'ib': ' на уровне/выше лоя инсайда', 'mother': ' на уровне/выше лоя матери'}[SELECT], where=where,
                              kind='rev', t_entry=str(sig), open=bool(e.open)))
 D = pd.DataFrame(rows); D.to_csv(OUT, index=False)
+pd.DataFrame(status).to_csv(OUT.replace('.csv', '_status.csv'), index=False)
 D2 = D.copy(); D2['conf'] = D2.conf + ' · ' + D2['where']; D2.to_csv(OUT.replace('.csv', '_split.csv'), index=False)
 if current: print(pd.DataFrame(current).to_string())
 print(len(rows))
