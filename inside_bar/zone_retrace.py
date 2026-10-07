@@ -44,7 +44,9 @@ for e in E.itertuples():
                      touch_before_E1=t_bot < t_E1, touch_before_newlow=t_bot < t_new, E1=t_E1 < NEVER,
                      days_touch=(t_bot - ts).total_seconds() / 86400 if t_bot < NEVER else np.nan,
                      touch_1w=t_bot < ts + pd.Timedelta(weeks=1), touch_wk=t_bot < (ts.normalize() - pd.Timedelta(days=ts.dayofweek) + pd.Timedelta(weeks=1)),
-                     h4_above_given_touch=(t_h4 < NEVER) if t_bot < NEVER else np.nan))
+                     h4_above_given_touch=(t_h4 < NEVER) if t_bot < NEVER else np.nan,
+                     h4_before_newlow=t_h4 < t_new, touch_first_h4_before_newlow=(t_h4 < t_new) if t_bot < t_new else np.nan,
+                     newlow=t_new < NEVER, days_h4=(t_h4 - ts).total_seconds() / 86400 if t_h4 < NEVER else np.nan))
 D = pd.DataFrame(rows); D.to_csv(OUT, index=False)
 P = lambda x: f'{np.nanmean(x.astype(float)) * 100:3.0f}%'
 for nm, g in (('ETH снятие лоя', D[(D.sym == 'ETHUSDT') & (D.side == 'low')]), ('ETH обе', D[D.sym == 'ETHUSDT']),
@@ -54,3 +56,5 @@ for nm, g in (('ETH снятие лоя', D[(D.sym == 'ETHUSDT') & (D.side == 'l
     t = z[z.touch]
     print(f'{nm:20s} случаев {len(g):3d} (с зоной {len(z)}) | до зоны {z.dist_R.median():.2f}R | откат в зону: до этой недели {P(z.touch_wk)}  за неделю {P(z.touch_1w)}  за 4 нед. {P(z.touch)} '
           f'(медиана {t.days_touch.median():.1f} дн.) | середина зоны {P(z.mid)}  вся зона {P(z.full)}  H4 выше {P(z.h4_above)} | откат раньше нового лоя {P(z.touch_before_newlow)}  раньше L-1R {P(z.touch_before_E1)} | после касания H4 выше {P(t.h4_above)}')
+    tb = z[z.touch_before_newlow]
+    print(f'{"":20s} H4 выше зоны РАНЬШЕ нового лоя: {P(z.h4_before_newlow)} | новый лой за 4 нед. {P(z.newlow)} | если в зону зашли до нового лоя (n={len(tb)}): H4 выше до нового лоя {P(tb.h4_before_newlow)} | дней до пробоя (медиана) {z[z.h4_before_newlow].days_h4.median():.1f}')
