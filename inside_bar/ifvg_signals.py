@@ -6,10 +6,14 @@
 python ifvg_signals.py <dir_pkl> <events.csv> <out.csv> [state_X]   (state_X — отсчёт от текущего состояния)"""
 import sys, numpy as np, pandas as pd
 SRC, EV, OUT = sys.argv[1:4]
-X = float(sys.argv[4]) if len(sys.argv) > 4 else None
+X = float(sys.argv[4]) if len(sys.argv) > 4 and sys.argv[4] != '-' else None
+# SELECT: last — последний FVG; ib — последний FVG, у которого верх >= лоя инсайда (на уровне или выше);
+#         mother — то же относительно лоя матери
+SELECT = sys.argv[5] if len(sys.argv) > 5 else 'last'
 E = pd.read_csv(EV)
 TFS = {'H4': '4h', 'H1': '1h', 'D1': '1D'}
 LOOKBACK = {'H4': 42, 'H1': 168, 'D1': 10}       # ≈7 дней (D1 — 10 дней)
+if SELECT != 'last': LOOKBACK = {'H4': 84, 'H1': 336, 'D1': 14}   # уровень мог сформироваться раньше
 WIN = pd.Timedelta(days=7)
 def agg(df, rule):
     return df.resample(rule, label='left', closed='left').agg(h=('h', 'max'), l=('l', 'min'), c=('c', 'last')).dropna()
@@ -23,6 +27,9 @@ for e in E.itertuples():
     sg = 1 if e.side == 'low' else -1
     L, H, R = sg * e.L, sg * e.H, e.R
     t0 = pd.Timestamp(e.t0)
+    ibw = pd.Timestamp(e.ib_week)
+    ib_l = m.loc[ibw:ibw + pd.Timedelta(weeks=1) - pd.Timedelta('15min')].l.min()
+    lvl_sel = {'ib': ib_l, 'mother': L}.get(SELECT)
     anchor = t0
     if X is not None:
         a1 = m.loc[t0:t0 + pd.Timedelta(weeks=1)]
@@ -46,17 +53,21 @@ for e in E.itertuples():
                 if hv[k] < lv[k - 2]:                            # медвежий FVG: верх = l[k-2], низ = h[k]
                     t_top = lv[k - 2]
                     if (cv[k + 1:x + 1] > t_top).any(): continue   # уже инвертирован до экстремума
+                    if lvl_sel is not None and t_top < lvl_sel: continue   # нужен FVG на уровне или выше
                     top = t_top; kk = k; break
             if top is None: continue
-            last_info = (top, idx[kk])
+            last_info = (top, idx[kk], hv[kk])
             if cv[j] > top and (cv[x + 1:j] <= top).all():
                 sig = tclose; break
         if e.open and X is not None:
             current.append(dict(sym=e.sym, side=e.side, tf=tf, fvg_top=sg * last_info[0] if last_info else None,
                                 fvg_bar=str(last_info[1]) if last_info else None, signal=str(sig)))
         if sig is not None:
-            where = 'верх FVG выше L' if last_info[0] > L else 'верх FVG ниже L'
-            rows.append(dict(sym=e.sym, side=e.side, ib_week=e.ib_week, conf=f'Инверсия последнего {tf} FVG перед экстремумом', where=where,
+            if SELECT == 'ib':
+                where = 'FVG на уровне инсайда' if last_info[2] <= ib_l else 'FVG выше лоя инсайда'
+            else:
+                where = 'верх FVG выше L' if last_info[0] > L else 'верх FVG ниже L'
+            rows.append(dict(sym=e.sym, side=e.side, ib_week=e.ib_week, conf=f'Инверсия {tf} FVG' + {'last': ' (последний)', 'ib': ' на уровне/выше лоя инсайда', 'mother': ' на уровне/выше лоя матери'}[SELECT], where=where,
                              kind='rev', t_entry=str(sig), open=bool(e.open)))
 D = pd.DataFrame(rows); D.to_csv(OUT, index=False)
 D2 = D.copy(); D2['conf'] = D2.conf + ' · ' + D2['where']; D2.to_csv(OUT.replace('.csv', '_split.csv'), index=False)
