@@ -1,0 +1,67 @@
+{
+ "all": {
+  "back_L": 79.9,
+  "L_before_E1": 46.1,
+  "mid_first": 30.9,
+  "H_first": 23.0,
+  "E1_first": 74.0,
+  "reach_H": 47.2,
+  "reach_E1": 79.6,
+  "reach_E15": 59.5,
+  "wk_close_inside": 20.8,
+  "wk_close_below_mother": 55.0,
+  "n": 269
+ },
+ "ETH": {
+  "back_L": 71.0,
+  "L_before_E1": 51.6,
+  "mid_first": 35.5,
+  "H_first": 29.0,
+  "E1_first": 71.0,
+  "reach_H": 51.6,
+  "reach_E1": 80.6,
+  "reach_E15": 67.7,
+  "wk_close_inside": 19.4,
+  "wk_close_below_mother": 51.6,
+  "n": 31
+ },
+ "low_side": {
+  "back_L": 83.2,
+  "L_before_E1": 52.9,
+  "mid_first": 36.1,
+  "H_first": 27.7,
+  "E1_first": 66.4,
+  "reach_H": 47.9,
+  "reach_E1": 72.3,
+  "reach_E15": 48.7,
+  "wk_close_inside": 27.7,
+  "wk_close_below_mother": 42.0,
+  "n": 119
+ },
+ "midweek": {
+  "back_L": 77.3,
+  "L_before_E1": 48.9,
+  "mid_first": 33.3,
+  "H_first": 27.0,
+  "E1_first": 71.6,
+  "reach_H": 48.2,
+  "reach_E1": 79.4,
+  "reach_E15": 60.3,
+  "wk_close_inside": 20.6,
+  "wk_close_below_mother": 58.9,
+  "n": 141
+ },
+ "midweek_low": {
+  "back_L": 82.0,
+  "L_before_E1": 63.9,
+  "mid_first": 47.5,
+  "H_first": 41.0,
+  "E1_first": 55.7,
+  "reach_H": 59.0,
+  "reach_E1": 63.9,
+  "reach_E15": 42.6,
+  "wk_close_inside": 32.8,
+  "wk_close_below_mother": 36.1,
+  "n": 61
+ }
+}
