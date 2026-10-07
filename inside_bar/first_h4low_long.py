@@ -15,9 +15,11 @@ for e in E.itertuples():
     m, b4 = cache[(e.sym, e.side)]
     sg = 1 if e.side == 'low' else -1
     L, H, R = sg * e.L, sg * e.H, e.R; t0 = pd.Timestamp(e.t0)
-    F = b4.loc[t0.floor('4h'):t0 + pd.Timedelta(weeks=2)]; fh4, fl4, fi4 = F.h.values, F.l.values, F.index
+    j0 = b4.index.searchsorted(t0.floor('4h'))                     # свеча H4, в которой пересекли лой матери
+    F = b4.iloc[max(0, j0 - 2):j0 + 84]; fh4, fl4, fi4 = F.h.values, F.l.values, F.index
+    k0 = j0 - max(0, j0 - 2)                                          # центр фрактала может быть уже на свече пересечения
     k_found = None
-    for k in range(2, len(F) - 2):
+    for k in range(max(2, k0), len(F) - 2):
         if fl4[k] < L and fl4[k] < fl4[k - 1] and fl4[k] < fl4[k - 2] and fl4[k] <= fl4[k + 1] and fl4[k] <= fl4[k + 2]:
             if fl4[k] > m.loc[t0:fi4[k] + pd.Timedelta('4h') - pd.Timedelta('15min')].l.min() + 1e-12: continue
             k_found = k; break
