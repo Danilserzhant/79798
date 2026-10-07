@@ -8,6 +8,9 @@ SYMS = sys.argv[3:] or [f[:-4] for f in sorted(os.listdir(SRC)) if f.endswith('.
 COST = 0.001; rows = []
 # SEL=pdl: берём последний медвежий H1 FVG, у которого верх >= PDL (пересекает PDL или выше него)
 SEL = os.environ.get('SEL', 'last')
+FTF = os.environ.get('FTF', '1h')    # ТФ FVG: 1h или 4h
+STF = os.environ.get('STF', FTF)     # ТФ закрытия-сигнала (выше верха FVG): 1h или 4h
+LB = int(os.environ.get('LB', '48'))  # сколько баров FVG-ТФ искать назад от экстремума
 def ny_am(ts):
     t = ts.tz_localize('UTC').tz_convert('America/New_York')
     mins = t.hour * 60 + t.minute
@@ -17,8 +20,9 @@ for sym in SYMS:
     for side in ('low', 'high'):
         m = raw if side == 'low' else pd.DataFrame({'o': -raw.o, 'h': -raw.l, 'l': -raw.h, 'c': -raw.c}, index=raw.index)
         D = m.resample('1D').agg(h=('h', 'max'), l=('l', 'min'), c=('c', 'last')).dropna()
-        H1 = m.resample('1h').agg(h=('h', 'max'), l=('l', 'min'), c=('c', 'last')).dropna()
+        H1 = m.resample(FTF).agg(h=('h', 'max'), l=('l', 'min'), c=('c', 'last')).dropna()
         hv, lv, cv, hi = H1.h.values, H1.l.values, H1.c.values, H1.index
+        SG = m.resample(STF).agg(c=('c', 'last')).dropna(); sgc, sgi = SG.c.values, SG.index
         ql, qh, qc, qi = m.l.values, m.h.values, m.c.values, m.index
         for d in range(1, len(D)):
             day = D.index[d]; PDL, PDH = D.l.iloc[d - 1], D.h.iloc[d - 1]
@@ -34,23 +38,31 @@ for sym in SYMS:
                 dc_t = D.index[dd] + pd.Timedelta('1D')
                 if dc_t > end: break
                 if D.c.iloc[dd] < PDL: end = dc_t; r['inval_t'] = str(dc_t); break
-            j0 = hi.searchsorted(t_sw.floor('1h')); sig = None
-            for j in range(j0, len(H1)):
-                tclose = hi[j] + pd.Timedelta('1h')
+            j0 = hi.searchsorted(t_sw.floor(FTF)); sig = None
+            s0 = sgi.searchsorted(t_sw.floor(STF))
+            for js in range(s0, len(SG)):
+                tclose = sgi[js] + pd.Timedelta(STF)
                 if tclose > end: break
-                x = j0 + int(np.argmin(lv[j0:j + 1]))
-                if x == j: continue
+                # бары FVG-ТФ, полностью закрытые к tclose
+                jf = hi.searchsorted(tclose - pd.Timedelta(FTF), side='right') - 1
+                if jf < j0: continue
+                lo_seg = ql[qi.searchsorted(t_sw):qi.searchsorted(tclose)]
+                x = j0 + int(np.argmin(lv[j0:jf + 1]))
                 top = None
-                for k in range(x, max(2, x - 48), -1):
+                for k in range(min(x, jf), max(2, x - LB), -1):
                     if hv[k] < lv[k - 2] and not (cv[k + 1:x + 1] > lv[k - 2]).any():
                         if SEL == 'pdl' and lv[k - 2] < PDL: continue
                         top = lv[k - 2]; kk = k; break
                 if top is None: continue
-                if cv[j] > top and not (cv[x + 1:j] > top).any():
-                    sig = j; fvg_top, fvg_bot, fvg_t = top, hv[kk], hi[kk]; break
+                # экстремум должен быть до сигнала: лой после экстремума не обновлялся
+                t_ext = qi[qi.searchsorted(t_sw) + int(np.argmin(lo_seg))]
+                if t_ext >= sgi[js]: continue
+                prev = sgc[s0:js][sgi[s0:js] >= t_ext]
+                if sgc[js] > top and not (prev > top).any():
+                    sig = js; fvg_top, fvg_bot, fvg_t = top, hv[kk], hi[kk]; break
             if sig is None:
                 r['status'] = 'инвалидация' if 'inval_t' in r else 'нет сигнала'; rows.append(r); continue
-            tE = hi[sig] + pd.Timedelta('1h'); entry = cv[sig]
+            tE = sgi[sig] + pd.Timedelta(STF); entry = sgc[sig]
             sweep_low = ql[qi.searchsorted(t_sw):qi.searchsorted(tE)].min()
             stop = sweep_low - 0.001 * abs(sweep_low); risk = entry - stop
             if risk <= 0: continue
@@ -65,11 +77,11 @@ for sym in SYMS:
             pre = D.iloc[max(0, d - 6):d]
             r.update(pos_in_pd=(entry - PDL) / (PDH - PDL) if PDH > PDL else np.nan,
                      entry_vs_pdl_R=(entry - PDL) / risk, fvg_top_vs_pdl_pct=(fvg_top - PDL) / abs(PDL) * 100,
-                     fvg_size_pct=(fvg_top - fvg_bot) / abs(PDL) * 100, fvg_age_h=(hi[x] - fvg_t).total_seconds() / 3600,
+                     fvg_size_pct=(fvg_top - fvg_bot) / abs(PDL) * 100, fvg_age_h=(t_ext - fvg_t).total_seconds() / 3600,
                      prev_day_bull=bool(D.c.iloc[d - 1] > D.c.iloc[d - 2]) if d >= 2 else None,
                      trend5=float((D.c.iloc[d - 1] - D.c.iloc[d - 6]) / abs(D.c.iloc[d - 6]) * 100) if d >= 6 else np.nan,
                      pd_range_pct=(PDH - PDL) / abs(PDL) * 100, sig_same_day=bool(tE <= day + pd.Timedelta('1D')),
-                     sig_ny=bool(ny_am(hi[sig])), fvg_cross=bool(fvg_bot <= PDL), sig_hour_et=int(hi[sig].tz_localize('UTC').tz_convert('America/New_York').hour))
+                     sig_ny=bool(ny_am(sgi[sig])), fvg_cross=bool(fvg_bot <= PDL), sig_hour_et=int(sgi[sig].tz_localize('UTC').tz_convert('America/New_York').hour))
             iS_ = iS if iS < 10**9 else len(fh) - 1
             r['mfe_R'] = (fh[:iS_ + 1].max() - entry) / risk if iS_ >= 0 and len(fh) else np.nan
             r['new_low_after'] = bool(len(fl) and fl.min() < sweep_low)
