@@ -6,6 +6,8 @@ import sys, os, numpy as np, pandas as pd
 SRC, OUT = sys.argv[1], sys.argv[2]
 SYMS = sys.argv[3:] or [f[:-4] for f in sorted(os.listdir(SRC)) if f.endswith('.pkl')]
 COST = 0.001; rows = []
+# SEL=pdl: берём последний медвежий H1 FVG, у которого верх >= PDL (пересекает PDL или выше него)
+SEL = os.environ.get('SEL', 'last')
 def ny_am(ts):
     t = ts.tz_localize('UTC').tz_convert('America/New_York')
     mins = t.hour * 60 + t.minute
@@ -41,6 +43,7 @@ for sym in SYMS:
                 top = None
                 for k in range(x, max(2, x - 48), -1):
                     if hv[k] < lv[k - 2] and not (cv[k + 1:x + 1] > lv[k - 2]).any():
+                        if SEL == 'pdl' and lv[k - 2] < PDL: continue
                         top = lv[k - 2]; kk = k; break
                 if top is None: continue
                 if cv[j] > top and not (cv[x + 1:j] > top).any():
@@ -66,7 +69,7 @@ for sym in SYMS:
                      prev_day_bull=bool(D.c.iloc[d - 1] > D.c.iloc[d - 2]) if d >= 2 else None,
                      trend5=float((D.c.iloc[d - 1] - D.c.iloc[d - 6]) / abs(D.c.iloc[d - 6]) * 100) if d >= 6 else np.nan,
                      pd_range_pct=(PDH - PDL) / abs(PDL) * 100, sig_same_day=bool(tE <= day + pd.Timedelta('1D')),
-                     sig_ny=bool(ny_am(hi[sig])), sig_hour_et=int(hi[sig].tz_localize('UTC').tz_convert('America/New_York').hour))
+                     sig_ny=bool(ny_am(hi[sig])), fvg_cross=bool(fvg_bot <= PDL), sig_hour_et=int(hi[sig].tz_localize('UTC').tz_convert('America/New_York').hour))
             iS_ = iS if iS < 10**9 else len(fh) - 1
             r['mfe_R'] = (fh[:iS_ + 1].max() - entry) / risk if iS_ >= 0 and len(fh) else np.nan
             r['new_low_after'] = bool(len(fl) and fl.min() < sweep_low)
