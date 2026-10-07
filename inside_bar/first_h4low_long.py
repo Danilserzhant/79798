@@ -5,6 +5,7 @@
 цель — низ зоны. Издержки 0,1%. Одна сделка на событие. python first_h4low_long.py <dir_pkl> <events.csv> <out.csv>"""
 import sys, os, numpy as np, pandas as pd
 NF = int(os.environ.get('FRAC', '5')) // 2   # 5 — фрактал 2+2, 3 — фрактал 1+1
+NM = int(os.environ.get('MFRAC', '5')) // 2  # фрактальный хай M15 для шифта: 5 — 2+2, 3 — 1+1
 SRC, EV, OUT = sys.argv[1:4]
 E = pd.read_csv(EV); E = E[~E.open]
 cache = {}; rows = []
@@ -53,8 +54,8 @@ for e in E.itertuples():
         if j <= lo_i: continue
         fh = None
         for q in range(lo_i - 1, max(i2 - 200, 2), -1):
-            if q + 2 >= j: continue
-            if h2[q] > h2[q - 1] and h2[q] > h2[q - 2] and h2[q] >= h2[q + 1] and h2[q] >= h2[q + 2]:
+            if q + NM >= j or q - NM < 0: continue
+            if all(h2[q] > h2[q - d] for d in range(1, NM + 1)) and all(h2[q] >= h2[q + d] for d in range(1, NM + 1)):
                 if (c2[q + 1:lo_i + 1] > h2[q]).any(): continue
                 fh = h2[q]; break
         if fh is not None and c2[j] > fh: sig = j; break
