@@ -1,0 +1,510 @@
+sym,side,ib_week,conf,t,wk_ok,H_first,reach_H,reach_E1
+ETHUSDT,low,2020-02-17,Ордерблок H1: закрытие выше OB,2020-02-26 19:00:00,False,False,True,True
+ETHUSDT,low,2020-02-17,Первый восходящий H1 FVG,2020-02-26 20:00:00,False,False,True,True
+ETHUSDT,low,2020-02-17,Поглощение H1 у лоя,2020-02-27 04:00:00,False,False,True,True
+ETHUSDT,low,2020-02-17,Поглощение H4 у лоя,2020-02-27 08:00:00,False,False,True,True
+ETHUSDT,low,2020-02-17,Ордерблок H4: закрытие выше OB,2020-02-27 08:00:00,False,False,True,True
+ETHUSDT,low,2020-02-17,Ордерблок H1: вход на ретесте OB,2020-02-26 19:00:00,False,False,True,True
+ETHUSDT,low,2020-02-17,Ордерблок H4: вход на ретесте OB,2020-02-27 09:45:00,False,False,True,True
+ETHUSDT,low,2020-06-08,Ордерблок H1: закрытие выше OB,2020-06-15 08:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Первый восходящий H1 FVG,2020-06-15 16:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Восходящий H1 FVG выше лоя инсайда,2020-06-15 17:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Поглощение H1 с закрытием выше лоя инсайда,2020-06-15 19:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Импульсная свеча H1 выше лоя инсайда,2020-06-15 19:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Поглощение H4 у лоя,2020-06-15 16:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Поглощение H4 с закрытием выше лоя инсайда,2020-06-15 16:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Первый восходящий H4 FVG,2020-06-15 20:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Ордерблок H4: закрытие выше OB,2020-06-15 20:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Импульсная свеча H4 выше лоя инсайда,2020-06-15 20:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Восходящий H4 FVG выше лоя инсайда,2020-06-16 00:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Поглощение D1 у лоя,2020-06-17 00:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Поглощение D1 с закрытием выше лоя инсайда,2020-06-17 00:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Ордерблок D1: закрытие выше OB,2020-06-17 00:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Импульсная свеча D1 выше лоя инсайда,2020-06-23 00:00:00,False,False,False,False
+ETHUSDT,low,2020-06-08,Первый восходящий D1 FVG,2020-06-24 00:00:00,False,False,False,False
+ETHUSDT,low,2020-06-08,Восходящий D1 FVG выше лоя инсайда,2020-06-24 00:00:00,False,False,False,False
+ETHUSDT,low,2020-06-08,Ордерблок H1: вход на ретесте OB,2020-06-15 08:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Ордерблок H4: вход на ретесте OB,2020-06-17 20:00:00,True,False,False,False
+ETHUSDT,low,2020-06-08,Ордерблок D1: вход на ретесте OB,2020-06-17 01:30:00,True,False,False,False
+ETHUSDT,low,2021-03-15,Ордерблок H1: закрытие выше OB,2021-03-23 09:00:00,False,False,True,False
+ETHUSDT,low,2021-03-15,Первый восходящий H1 FVG,2021-03-23 11:00:00,False,False,True,False
+ETHUSDT,low,2021-03-15,Поглощение H1 у лоя,2021-03-24 02:00:00,False,False,True,False
+ETHUSDT,low,2021-03-15,Импульсная свеча H1 выше лоя инсайда,2021-03-24 09:00:00,False,False,True,False
+ETHUSDT,low,2021-03-15,Восходящий H1 FVG выше лоя инсайда,2021-03-28 06:00:00,False,True,True,False
+ETHUSDT,low,2021-03-15,Ордерблок H4: закрытие выше OB,2021-03-23 20:00:00,False,False,True,False
+ETHUSDT,low,2021-03-15,Первый восходящий H4 FVG,2021-03-24 12:00:00,False,False,True,False
+ETHUSDT,low,2021-03-15,Первый восходящий D1 FVG,2021-03-28 00:00:00,False,True,True,False
+ETHUSDT,low,2021-03-15,Ордерблок H1: вход на ретесте OB,2021-03-23 09:00:00,False,False,True,False
+ETHUSDT,low,2021-03-15,Ордерблок H4: вход на ретесте OB,2021-03-23 20:00:00,False,False,True,False
+ETHUSDT,low,2021-05-31,Ордерблок H1: закрытие выше OB,2021-06-20 15:00:00,False,False,False,False
+ETHUSDT,low,2021-05-31,Первый восходящий H1 FVG,2021-06-20 16:00:00,False,False,False,False
+ETHUSDT,low,2021-05-31,Ордерблок H4: закрытие выше OB,2021-06-20 20:00:00,False,False,False,False
+ETHUSDT,low,2021-05-31,Первый восходящий H4 FVG,2021-06-21 00:00:00,False,False,False,False
+ETHUSDT,low,2021-09-13,Поглощение H1 у лоя,2021-09-20 14:00:00,False,False,True,False
+ETHUSDT,low,2021-09-13,Ордерблок H1: закрытие выше OB,2021-09-20 14:00:00,False,False,True,False
+ETHUSDT,low,2021-09-13,Первый восходящий H1 FVG,2021-09-21 08:00:00,False,False,True,False
+ETHUSDT,low,2021-09-13,Импульсная свеча H1 выше лоя инсайда,2021-09-23 14:00:00,False,True,True,False
+ETHUSDT,low,2021-09-13,Восходящий H1 FVG выше лоя инсайда,2021-09-23 19:00:00,False,True,True,False
+ETHUSDT,low,2021-09-13,Поглощение H1 с закрытием выше лоя инсайда,2021-09-24 00:00:00,False,True,True,False
+ETHUSDT,low,2021-09-13,Первый восходящий H4 FVG,2021-09-21 12:00:00,False,False,True,False
+ETHUSDT,low,2021-09-13,Ордерблок H4: закрытие выше OB,2021-09-22 08:00:00,False,True,True,False
+ETHUSDT,low,2021-09-13,Поглощение D1 у лоя,2021-09-23 00:00:00,False,True,True,False
+ETHUSDT,low,2021-09-13,Ордерблок D1: закрытие выше OB,2021-09-24 00:00:00,False,True,True,False
+ETHUSDT,low,2021-09-13,Ордерблок H1: вход на ретесте OB,2021-09-20 14:00:00,False,False,True,False
+ETHUSDT,low,2021-09-13,Ордерблок H4: вход на ретесте OB,2021-09-22 08:30:00,False,True,True,False
+ETHUSDT,low,2021-09-13,Ордерблок D1: вход на ретесте OB,2021-09-24 01:15:00,False,True,True,False
+ETHUSDT,low,2021-12-06,Поглощение H1 у лоя,2022-01-06 13:00:00,False,False,False,False
+ETHUSDT,low,2021-12-06,Первый восходящий H1 FVG,2022-01-06 15:00:00,False,False,False,False
+ETHUSDT,low,2021-12-06,Ордерблок H1: закрытие выше OB,2022-01-06 18:00:00,False,False,False,False
+ETHUSDT,low,2021-12-06,Ордерблок H4: закрытие выше OB,2022-01-09 20:00:00,False,False,False,False
+ETHUSDT,low,2021-12-06,Первый восходящий H4 FVG,2022-01-10 00:00:00,False,False,False,False
+ETHUSDT,low,2021-12-06,Ордерблок H1: вход на ретесте OB,2022-01-06 23:15:00,False,False,False,False
+ETHUSDT,low,2021-12-06,Ордерблок H4: вход на ретесте OB,2022-01-09 22:45:00,False,False,False,False
+ETHUSDT,low,2022-05-16,Поглощение H1 у лоя,2022-05-26 15:00:00,False,False,False,True
+ETHUSDT,low,2022-05-16,Ордерблок H1: закрытие выше OB,2022-05-26 15:00:00,False,False,False,True
+ETHUSDT,low,2022-05-16,Первый восходящий H1 FVG,2022-05-26 16:00:00,False,False,False,True
+ETHUSDT,low,2022-05-16,Поглощение H4 у лоя,2022-05-27 12:00:00,False,False,False,True
+ETHUSDT,low,2022-05-16,Ордерблок H4: закрытие выше OB,2022-05-28 16:00:00,False,False,False,True
+ETHUSDT,low,2022-05-16,Первый восходящий H4 FVG,2022-05-29 16:00:00,False,False,False,True
+ETHUSDT,low,2022-05-16,Поглощение D1 у лоя,2022-05-29 00:00:00,False,False,False,True
+ETHUSDT,low,2022-05-16,Ордерблок H1: вход на ретесте OB,2022-05-26 20:00:00,False,False,False,True
+ETHUSDT,low,2022-05-16,Ордерблок H4: вход на ретесте OB,2022-05-28 17:15:00,False,False,False,True
+ETHUSDT,low,2022-05-30,Ордерблок H1: закрытие выше OB,2022-06-11 17:00:00,False,False,False,True
+ETHUSDT,low,2022-05-30,Поглощение H1 у лоя,2022-06-11 19:00:00,False,False,False,True
+ETHUSDT,low,2022-05-30,Первый восходящий H1 FVG,2022-06-11 20:00:00,False,False,False,True
+ETHUSDT,low,2022-05-30,Поглощение H4 у лоя,2022-06-11 04:00:00,False,False,False,True
+ETHUSDT,low,2022-05-30,Ордерблок H1: вход на ретесте OB,2022-06-11 17:00:00,False,False,False,True
+ETHUSDT,low,2022-09-26,Поглощение H1 у лоя,2022-10-13 16:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Поглощение H1 с закрытием выше лоя инсайда,2022-10-13 16:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Импульсная свеча H1 выше лоя инсайда,2022-10-13 16:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Первый восходящий H1 FVG,2022-10-13 17:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Ордерблок H1: закрытие выше OB,2022-10-13 19:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Восходящий H1 FVG выше лоя инсайда,2022-10-13 20:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Импульсная свеча H4 выше лоя инсайда,2022-10-13 20:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Первый восходящий H4 FVG,2022-10-14 00:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Восходящий H4 FVG выше лоя инсайда,2022-10-14 00:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Поглощение H4 с закрытием выше лоя инсайда,2022-10-15 04:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Поглощение D1 у лоя,2022-10-15 00:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Поглощение D1 с закрытием выше лоя инсайда,2022-10-15 00:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Ордерблок D1: закрытие выше OB,2022-10-17 00:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Импульсная свеча D1 выше лоя инсайда,2022-10-24 00:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Первый восходящий D1 FVG,2022-10-25 00:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Восходящий D1 FVG выше лоя инсайда,2022-10-25 00:00:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Ордерблок H1: вход на ретесте OB,2022-10-13 19:30:00,True,True,True,False
+ETHUSDT,low,2022-09-26,Ордерблок D1: вход на ретесте OB,2022-10-17 00:15:00,True,True,True,False
+ETHUSDT,low,2022-10-03,Поглощение H1 у лоя,2022-10-13 16:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Первый восходящий H1 FVG,2022-10-13 17:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Ордерблок H1: закрытие выше OB,2022-10-13 19:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Восходящий H1 FVG выше лоя инсайда,2022-10-13 20:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Импульсная свеча H1 выше лоя инсайда,2022-10-14 02:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Поглощение H1 с закрытием выше лоя инсайда,2022-10-14 21:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Ордерблок H4: закрытие выше OB,2022-10-13 20:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Импульсная свеча H4 выше лоя инсайда,2022-10-13 20:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Первый восходящий H4 FVG,2022-10-14 00:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Восходящий H4 FVG выше лоя инсайда,2022-10-14 00:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Поглощение H4 с закрытием выше лоя инсайда,2022-10-15 04:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Поглощение D1 у лоя,2022-10-15 00:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Поглощение D1 с закрытием выше лоя инсайда,2022-10-15 00:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Ордерблок D1: закрытие выше OB,2022-10-17 00:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Импульсная свеча D1 выше лоя инсайда,2022-10-24 00:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Первый восходящий D1 FVG,2022-10-25 00:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Восходящий D1 FVG выше лоя инсайда,2022-10-25 00:00:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Ордерблок H1: вход на ретесте OB,2022-10-13 19:30:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Ордерблок H4: вход на ретесте OB,2022-10-15 08:45:00,True,True,True,True
+ETHUSDT,low,2022-10-03,Ордерблок D1: вход на ретесте OB,2022-10-17 00:15:00,True,True,True,True
+ETHUSDT,low,2023-02-20,Первый восходящий H1 FVG,2023-03-10 14:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Ордерблок H1: закрытие выше OB,2023-03-10 14:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Поглощение H1 с закрытием выше лоя инсайда,2023-03-12 23:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Импульсная свеча H1 выше лоя инсайда,2023-03-12 23:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Восходящий H1 FVG выше лоя инсайда,2023-03-13 02:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Поглощение H4 у лоя,2023-03-10 16:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Ордерблок H4: закрытие выше OB,2023-03-10 16:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Первый восходящий H4 FVG,2023-03-12 00:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Импульсная свеча H4 выше лоя инсайда,2023-03-13 00:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Поглощение H4 с закрытием выше лоя инсайда,2023-03-13 16:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Восходящий H4 FVG выше лоя инсайда,2023-03-13 20:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Ордерблок D1: закрытие выше OB,2023-03-12 00:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Первый восходящий D1 FVG,2023-03-13 00:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Импульсная свеча D1 выше лоя инсайда,2023-03-13 00:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Восходящий D1 FVG выше лоя инсайда,2023-03-15 00:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Поглощение D1 с закрытием выше лоя инсайда,2023-03-22 00:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Ордерблок H1: вход на ретесте OB,2023-03-10 14:00:00,True,True,True,False
+ETHUSDT,low,2023-02-20,Ордерблок H4: вход на ретесте OB,2023-03-10 16:00:00,True,True,True,False
+ETHUSDT,low,2023-05-29,Поглощение H1 у лоя,2023-06-10 11:00:00,False,False,True,False
+ETHUSDT,low,2023-05-29,Ордерблок H1: закрытие выше OB,2023-06-10 12:00:00,False,False,True,False
+ETHUSDT,low,2023-05-29,Первый восходящий H1 FVG,2023-06-11 00:00:00,False,False,True,False
+ETHUSDT,low,2023-05-29,Ордерблок H1: вход на ретесте OB,2023-06-10 12:00:00,False,False,True,False
+ETHUSDT,low,2023-10-02,Ордерблок H1: закрытие выше OB,2023-10-10 03:00:00,False,False,True,False
+ETHUSDT,low,2023-10-02,Первый восходящий H1 FVG,2023-10-10 04:00:00,False,False,True,False
+ETHUSDT,low,2023-10-02,Поглощение H1 у лоя,2023-10-11 05:00:00,False,False,True,False
+ETHUSDT,low,2023-10-02,Поглощение H4 у лоя,2023-10-10 04:00:00,False,False,True,False
+ETHUSDT,low,2023-10-02,Ордерблок H4: закрытие выше OB,2023-10-10 08:00:00,False,False,True,False
+ETHUSDT,low,2023-10-02,Первый восходящий H4 FVG,2023-10-14 04:00:00,False,True,True,False
+ETHUSDT,low,2023-10-02,Ордерблок H1: вход на ретесте OB,2023-10-10 03:00:00,False,False,True,False
+ETHUSDT,low,2023-10-02,Ордерблок H4: вход на ретесте OB,2023-10-10 10:30:00,False,False,True,False
+ETHUSDT,low,2024-10-28,Поглощение H1 с закрытием выше лоя инсайда,2024-11-05 04:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Первый восходящий H1 FVG,2024-11-05 05:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Восходящий H1 FVG выше лоя инсайда,2024-11-05 05:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Ордерблок H1: закрытие выше OB,2024-11-05 06:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Импульсная свеча H1 выше лоя инсайда,2024-11-05 15:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Ордерблок H4: закрытие выше OB,2024-11-05 08:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Первый восходящий H4 FVG,2024-11-05 12:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Восходящий H4 FVG выше лоя инсайда,2024-11-05 12:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Импульсная свеча H4 выше лоя инсайда,2024-11-06 04:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Поглощение H4 с закрытием выше лоя инсайда,2024-11-09 20:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Ордерблок D1: закрытие выше OB,2024-11-07 00:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Импульсная свеча D1 выше лоя инсайда,2024-11-07 00:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Первый восходящий D1 FVG,2024-11-08 00:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Восходящий D1 FVG выше лоя инсайда,2024-11-08 00:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Поглощение D1 с закрытием выше лоя инсайда,2024-11-19 00:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Ордерблок H1: вход на ретесте OB,2024-11-05 06:00:00,True,True,True,False
+ETHUSDT,low,2024-10-28,Ордерблок H4: вход на ретесте OB,2024-11-05 10:00:00,True,True,True,False
+ETHUSDT,low,2024-12-23,Ордерблок H1: закрытие выше OB,2025-01-13 21:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Первый восходящий H1 FVG,2025-01-13 22:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Импульсная свеча H1 выше лоя инсайда,2025-01-14 10:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Поглощение H1 с закрытием выше лоя инсайда,2025-01-14 23:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Восходящий H1 FVG выше лоя инсайда,2025-01-15 16:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Поглощение H4 у лоя,2025-01-14 00:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Ордерблок H4: закрытие выше OB,2025-01-14 00:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Первый восходящий H4 FVG,2025-01-14 04:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Импульсная свеча H4 выше лоя инсайда,2025-01-15 16:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Восходящий H4 FVG выше лоя инсайда,2025-01-15 20:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Поглощение H4 с закрытием выше лоя инсайда,2025-01-17 04:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Ордерблок D1: закрытие выше OB,2025-01-16 00:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Импульсная свеча D1 выше лоя инсайда,2025-01-16 00:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Первый восходящий D1 FVG,2025-01-17 00:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Восходящий D1 FVG выше лоя инсайда,2025-01-17 00:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Поглощение D1 с закрытием выше лоя инсайда,2025-01-18 00:00:00,False,False,False,True
+ETHUSDT,low,2024-12-23,Ордерблок D1: вход на ретесте OB,2025-01-16 08:30:00,False,False,False,True
+ETHUSDT,low,2025-02-10,Поглощение H1 у лоя,2025-02-28 09:00:00,False,False,False,False
+ETHUSDT,low,2025-02-10,Ордерблок H1: закрытие выше OB,2025-02-28 10:00:00,False,False,False,False
+ETHUSDT,low,2025-02-10,Первый восходящий H1 FVG,2025-02-28 17:00:00,False,False,False,False
+ETHUSDT,low,2025-02-10,Ордерблок H4: закрытие выше OB,2025-02-28 16:00:00,False,False,False,False
+ETHUSDT,low,2025-02-10,Первый восходящий H4 FVG,2025-02-28 20:00:00,False,False,False,False
+ETHUSDT,low,2025-02-10,Поглощение D1 у лоя,2025-03-03 00:00:00,False,False,False,False
+ETHUSDT,low,2025-02-10,Ордерблок D1: закрытие выше OB,2025-03-03 00:00:00,False,False,False,False
+ETHUSDT,low,2025-02-10,Ордерблок H1: вход на ретесте OB,2025-02-28 10:00:00,False,False,False,False
+ETHUSDT,low,2025-02-10,Ордерблок H4: вход на ретесте OB,2025-03-01 13:15:00,False,False,False,False
+ETHUSDT,low,2025-03-17,Первый восходящий H1 FVG,2025-04-03 22:00:00,False,False,False,False
+ETHUSDT,low,2025-03-17,Ордерблок H1: закрытие выше OB,2025-04-03 22:00:00,False,False,False,False
+ETHUSDT,low,2025-03-17,Ордерблок H4: закрытие выше OB,2025-04-04 00:00:00,False,False,False,False
+ETHUSDT,low,2025-03-17,Первый восходящий H4 FVG,2025-04-06 04:00:00,False,False,False,False
+ETHUSDT,low,2025-03-17,Ордерблок H1: вход на ретесте OB,2025-04-04 01:45:00,False,False,False,False
+ETHUSDT,low,2025-03-17,Ордерблок H4: вход на ретесте OB,2025-04-04 01:45:00,False,False,False,False
+ETHUSDT,low,2025-08-25,Первый восходящий H1 FVG,2025-09-22 22:00:00,False,False,False,False
+ETHUSDT,low,2025-08-25,Поглощение H1 у лоя,2025-09-25 15:00:00,False,False,False,False
+ETHUSDT,low,2025-08-25,Ордерблок H1: закрытие выше OB,2025-09-26 02:00:00,False,False,False,False
+ETHUSDT,low,2025-08-25,Поглощение H4 у лоя,2025-09-26 04:00:00,False,False,False,False
+ETHUSDT,low,2025-08-25,Ордерблок H4: закрытие выше OB,2025-09-26 20:00:00,False,False,False,False
+ETHUSDT,low,2025-08-25,Первый восходящий H4 FVG,2025-09-27 00:00:00,False,False,False,False
+ETHUSDT,low,2025-08-25,Поглощение D1 у лоя,2025-09-29 00:00:00,True,False,False,False
+ETHUSDT,low,2025-08-25,Ордерблок H1: вход на ретесте OB,2025-09-26 02:00:00,False,False,False,False
+ETHUSDT,low,2025-08-25,Ордерблок H4: вход на ретесте OB,2025-09-26 21:00:00,False,False,False,False
+ETHUSDT,low,2025-09-15,Первый восходящий H1 FVG,2025-09-22 22:00:00,False,False,False,True
+ETHUSDT,low,2025-09-15,Поглощение H1 у лоя,2025-09-25 15:00:00,False,False,False,True
+ETHUSDT,low,2025-09-15,Ордерблок H1: закрытие выше OB,2025-09-26 02:00:00,False,False,False,True
+ETHUSDT,low,2025-09-15,Поглощение H4 у лоя,2025-09-26 04:00:00,False,False,False,True
+ETHUSDT,low,2025-09-15,Ордерблок H4: закрытие выше OB,2025-09-26 20:00:00,False,False,False,True
+ETHUSDT,low,2025-09-15,Первый восходящий H4 FVG,2025-09-27 00:00:00,False,False,False,True
+ETHUSDT,low,2025-09-15,Поглощение D1 у лоя,2025-09-29 00:00:00,True,False,False,True
+ETHUSDT,low,2025-09-15,Ордерблок H1: вход на ретесте OB,2025-09-26 02:00:00,False,False,False,True
+ETHUSDT,low,2025-09-15,Ордерблок H4: вход на ретесте OB,2025-09-26 21:00:00,False,False,False,True
+ETHUSDT,low,2025-10-13,Первый восходящий H1 FVG,2025-11-05 00:00:00,False,False,False,False
+ETHUSDT,low,2025-10-13,Ордерблок H1: закрытие выше OB,2025-11-05 00:00:00,False,False,False,False
+ETHUSDT,low,2025-10-13,Первый восходящий H4 FVG,2025-11-05 20:00:00,False,False,False,False
+ETHUSDT,low,2025-10-13,Ордерблок H4: закрытие выше OB,2025-11-09 20:00:00,False,False,False,False
+ETHUSDT,low,2025-10-13,Поглощение D1 у лоя,2025-11-08 00:00:00,False,False,False,False
+ETHUSDT,low,2025-10-13,Ордерблок H1: вход на ретесте OB,2025-11-05 00:15:00,False,False,False,False
+ETHUSDT,low,2025-10-20,Поглощение H1 у лоя,2025-11-03 12:00:00,False,False,False,True
+ETHUSDT,low,2025-10-20,Поглощение H1 с закрытием выше лоя инсайда,2025-11-03 12:00:00,False,False,False,True
+ETHUSDT,low,2025-10-20,Импульсная свеча H1 выше лоя инсайда,2025-11-03 12:00:00,False,False,False,True
+ETHUSDT,low,2025-10-20,Ордерблок H1: закрытие выше OB,2025-11-03 14:00:00,False,False,False,True
+ETHUSDT,low,2025-10-20,Первый восходящий H1 FVG,2025-11-03 19:00:00,False,False,False,True
+ETHUSDT,low,2025-10-20,Поглощение H4 у лоя,2025-11-04 04:00:00,False,False,False,True
+ETHUSDT,low,2025-10-20,Ордерблок H4: закрытие выше OB,2025-11-04 04:00:00,False,False,False,True
+ETHUSDT,low,2025-10-20,Первый восходящий H4 FVG,2025-11-05 20:00:00,False,False,False,True
+ETHUSDT,low,2025-10-20,Поглощение D1 у лоя,2025-11-08 00:00:00,False,False,False,True
+ETHUSDT,low,2025-10-20,Ордерблок H1: вход на ретесте OB,2025-11-03 14:15:00,False,False,False,True
+ETHUSDT,low,2025-10-20,Ордерблок H4: вход на ретесте OB,2025-11-04 04:15:00,False,False,False,True
+ETHUSDT,low,2026-02-16,Первый восходящий H1 FVG,2026-02-23 08:00:00,True,False,True,False
+ETHUSDT,low,2026-02-16,Поглощение H1 с закрытием выше лоя инсайда,2026-02-23 10:00:00,True,False,True,False
+ETHUSDT,low,2026-02-16,Импульсная свеча H1 выше лоя инсайда,2026-02-23 10:00:00,True,False,True,False
+ETHUSDT,low,2026-02-16,Поглощение H1 у лоя,2026-02-24 15:00:00,True,True,True,False
+ETHUSDT,low,2026-02-16,Ордерблок H1: закрытие выше OB,2026-02-24 15:00:00,True,True,True,False
+ETHUSDT,low,2026-02-16,Восходящий H1 FVG выше лоя инсайда,2026-02-25 14:00:00,True,True,True,False
+ETHUSDT,low,2026-02-16,Импульсная свеча H4 выше лоя инсайда,2026-02-23 12:00:00,True,False,True,False
+ETHUSDT,low,2026-02-16,Первый восходящий H4 FVG,2026-02-23 16:00:00,True,False,True,False
+ETHUSDT,low,2026-02-16,Восходящий H4 FVG выше лоя инсайда,2026-02-25 16:00:00,True,True,True,False
+ETHUSDT,low,2026-02-16,Поглощение H4 с закрытием выше лоя инсайда,2026-02-27 04:00:00,True,True,True,False
+ETHUSDT,low,2026-02-16,Ордерблок D1: закрытие выше OB,2026-02-26 00:00:00,True,True,True,False
+ETHUSDT,low,2026-02-16,Импульсная свеча D1 выше лоя инсайда,2026-02-26 00:00:00,True,True,True,False
+ETHUSDT,low,2026-02-16,Первый восходящий D1 FVG,2026-02-27 00:00:00,True,True,True,False
+ETHUSDT,low,2026-02-16,Поглощение D1 с закрытием выше лоя инсайда,2026-03-05 00:00:00,True,True,True,False
+ETHUSDT,low,2026-02-16,Восходящий D1 FVG выше лоя инсайда,2026-03-06 00:00:00,True,True,True,False
+ETHUSDT,low,2026-02-16,Ордерблок D1: вход на ретесте OB,2026-02-28 06:30:00,True,True,True,False
+ETHUSDT,low,2026-04-20,Первый восходящий H1 FVG,2026-05-17 05:00:00,False,False,False,True
+ETHUSDT,low,2026-04-20,Ордерблок H1: закрытие выше OB,2026-05-17 11:00:00,False,False,False,True
+ETHUSDT,low,2026-04-20,Ордерблок H1: вход на ретесте OB,2026-05-17 11:00:00,False,False,False,True
+ETHUSDT,high,2020-01-20,Ордерблок H1: закрытие выше OB,2020-01-31 03:00:00,False,False,False,True
+ETHUSDT,high,2020-01-20,Первый восходящий H1 FVG,2020-01-31 06:00:00,False,False,False,True
+ETHUSDT,high,2020-01-20,Ордерблок H4: закрытие выше OB,2020-01-31 12:00:00,False,False,False,True
+ETHUSDT,high,2020-01-20,Поглощение H4 у лоя,2020-02-02 20:00:00,False,False,False,True
+ETHUSDT,high,2020-01-20,Ордерблок H1: вход на ретесте OB,2020-01-31 03:00:00,False,False,False,True
+ETHUSDT,high,2020-01-20,Ордерблок H4: вход на ретесте OB,2020-01-31 22:15:00,False,False,False,True
+ETHUSDT,high,2020-03-23,Ордерблок H1: закрытие выше OB,2020-04-07 02:00:00,False,False,False,True
+ETHUSDT,high,2020-03-23,Первый восходящий H1 FVG,2020-04-07 16:00:00,False,False,False,True
+ETHUSDT,high,2020-03-23,Первый восходящий H4 FVG,2020-04-10 08:00:00,False,False,False,True
+ETHUSDT,high,2020-03-23,Ордерблок H4: закрытие выше OB,2020-04-10 08:00:00,False,False,False,True
+ETHUSDT,high,2020-03-23,Первый восходящий D1 FVG,2020-04-12 00:00:00,False,False,False,True
+ETHUSDT,high,2020-03-23,Ордерблок H1: вход на ретесте OB,2020-04-07 02:00:00,False,False,False,True
+ETHUSDT,high,2020-03-23,Ордерблок H4: вход на ретесте OB,2020-04-11 04:00:00,False,False,False,True
+ETHUSDT,high,2020-06-29,Ордерблок H1: закрытие выше OB,2020-07-24 23:00:00,False,False,False,True
+ETHUSDT,high,2020-06-29,Первый восходящий H1 FVG,2020-07-25 00:00:00,False,False,False,True
+ETHUSDT,high,2020-06-29,Поглощение H4 у лоя,2020-07-25 12:00:00,False,False,False,True
+ETHUSDT,high,2020-06-29,Ордерблок H1: вход на ретесте OB,2020-07-24 23:00:00,False,False,False,True
+ETHUSDT,high,2020-07-13,Ордерблок H1: закрытие выше OB,2020-07-24 23:00:00,False,False,False,True
+ETHUSDT,high,2020-07-13,Первый восходящий H1 FVG,2020-07-25 00:00:00,False,False,False,True
+ETHUSDT,high,2020-07-13,Поглощение H4 у лоя,2020-07-25 12:00:00,False,False,False,True
+ETHUSDT,high,2020-07-13,Ордерблок H1: вход на ретесте OB,2020-07-24 23:00:00,False,False,False,True
+ETHUSDT,high,2020-08-03,Ордерблок H1: закрытие выше OB,2020-08-15 09:00:00,False,False,False,False
+ETHUSDT,high,2020-08-03,Первый восходящий H1 FVG,2020-08-16 12:00:00,False,False,False,False
+ETHUSDT,high,2020-08-03,Поглощение H4 у лоя,2020-08-15 08:00:00,False,False,False,False
+ETHUSDT,high,2020-08-03,Ордерблок H4: закрытие выше OB,2020-08-15 20:00:00,False,False,False,False
+ETHUSDT,high,2020-08-03,Ордерблок H1: вход на ретесте OB,2020-08-15 09:00:00,False,False,False,False
+ETHUSDT,high,2020-08-03,Ордерблок H4: вход на ретесте OB,2020-08-15 20:00:00,False,False,False,False
+ETHUSDT,high,2020-09-28,Ордерблок H1: закрытие выше OB,2020-10-10 06:00:00,False,False,False,True
+ETHUSDT,high,2020-09-28,Первый восходящий H1 FVG,2020-10-10 11:00:00,False,False,False,True
+ETHUSDT,high,2020-09-28,Ордерблок H1: вход на ретесте OB,2020-10-10 07:15:00,False,False,False,True
+ETHUSDT,high,2020-10-26,Поглощение H1 у лоя,2020-11-07 03:00:00,False,False,False,True
+ETHUSDT,high,2020-10-26,Ордерблок H1: закрытие выше OB,2020-11-07 03:00:00,False,False,False,True
+ETHUSDT,high,2020-10-26,Первый восходящий H1 FVG,2020-11-07 16:00:00,False,False,False,True
+ETHUSDT,high,2020-10-26,Поглощение H4 у лоя,2020-11-06 16:00:00,False,False,False,True
+ETHUSDT,high,2020-10-26,Ордерблок H4: закрытие выше OB,2020-11-07 16:00:00,False,False,False,True
+ETHUSDT,high,2020-10-26,Ордерблок H1: вход на ретесте OB,2020-11-07 03:00:00,False,False,False,True
+ETHUSDT,high,2020-10-26,Ордерблок H4: вход на ретесте OB,2020-11-08 15:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Ордерблок H1: закрытие выше OB,2021-01-19 19:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Первый восходящий H1 FVG,2021-01-19 20:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Импульсная свеча H1 выше лоя инсайда,2021-01-21 05:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Восходящий H1 FVG выше лоя инсайда,2021-01-21 23:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Поглощение H1 с закрытием выше лоя инсайда,2021-01-22 21:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Ордерблок H4: закрытие выше OB,2021-01-19 20:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Импульсная свеча H4 выше лоя инсайда,2021-01-20 12:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Первый восходящий H4 FVG,2021-01-21 16:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Восходящий H4 FVG выше лоя инсайда,2021-01-21 16:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Поглощение H4 с закрытием выше лоя инсайда,2021-01-23 12:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Ордерблок D1: закрытие выше OB,2021-01-22 00:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Импульсная свеча D1 выше лоя инсайда,2021-01-22 00:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Ордерблок H1: вход на ретесте OB,2021-01-19 20:30:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Ордерблок H4: вход на ретесте OB,2021-01-19 20:00:00,False,False,False,True
+ETHUSDT,high,2021-01-11,Ордерблок D1: вход на ретесте OB,2021-01-22 18:45:00,False,False,False,True
+ETHUSDT,high,2021-03-01,Поглощение H1 у лоя,2021-03-13 22:00:00,False,False,False,False
+ETHUSDT,high,2021-03-01,Ордерблок H1: закрытие выше OB,2021-03-13 22:00:00,False,False,False,False
+ETHUSDT,high,2021-03-01,Первый восходящий H1 FVG,2021-03-13 23:00:00,False,False,False,False
+ETHUSDT,high,2021-03-01,Ордерблок H1: вход на ретесте OB,2021-03-13 23:00:00,False,False,False,False
+ETHUSDT,high,2022-06-20,Поглощение H1 у лоя,2022-07-18 12:00:00,False,False,False,False
+ETHUSDT,high,2022-06-20,Ордерблок H1: закрытие выше OB,2022-07-18 18:00:00,False,False,False,False
+ETHUSDT,high,2022-06-20,Первый восходящий H1 FVG,2022-07-18 19:00:00,False,False,False,False
+ETHUSDT,high,2022-06-20,Первый восходящий H4 FVG,2022-07-21 00:00:00,False,False,False,False
+ETHUSDT,high,2022-06-20,Поглощение H4 у лоя,2022-07-22 16:00:00,False,False,False,False
+ETHUSDT,high,2022-06-20,Ордерблок H4: закрытие выше OB,2022-07-22 16:00:00,False,False,False,False
+ETHUSDT,high,2022-06-20,Ордерблок H1: вход на ретесте OB,2022-07-18 18:00:00,False,False,False,False
+ETHUSDT,high,2022-06-20,Ордерблок H4: вход на ретесте OB,2022-07-23 04:30:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Ордерблок H1: закрытие выше OB,2022-08-08 16:00:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Первый восходящий H1 FVG,2022-08-08 17:00:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Импульсная свеча H1 выше лоя инсайда,2022-08-09 10:00:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Восходящий H1 FVG выше лоя инсайда,2022-08-09 12:00:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Поглощение H1 с закрытием выше лоя инсайда,2022-08-09 14:00:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Поглощение H1 у лоя,2022-08-14 11:00:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Поглощение H4 с закрытием выше лоя инсайда,2022-08-09 12:00:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Ордерблок H4: закрытие выше OB,2022-08-09 12:00:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Импульсная свеча H4 выше лоя инсайда,2022-08-09 12:00:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Первый восходящий H4 FVG,2022-08-09 16:00:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Поглощение H4 у лоя,2022-08-12 00:00:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Ордерблок H1: вход на ретесте OB,2022-08-08 19:15:00,False,False,False,False
+ETHUSDT,high,2022-08-01,Ордерблок H4: вход на ретесте OB,2022-08-10 12:30:00,False,False,False,False
+ETHUSDT,high,2022-11-14,Первый восходящий H1 FVG,2023-01-14 11:00:00,False,False,False,False
+ETHUSDT,high,2022-12-05,Первый восходящий H1 FVG,2022-12-13 17:00:00,True,False,True,False
+ETHUSDT,high,2022-12-05,Ордерблок H1: закрытие выше OB,2022-12-14 20:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Импульсная свеча H1 выше лоя инсайда,2022-12-15 02:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Восходящий H1 FVG выше лоя инсайда,2022-12-15 03:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Поглощение H1 с закрытием выше лоя инсайда,2022-12-15 17:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Поглощение H4 у лоя,2022-12-15 04:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Поглощение H4 с закрытием выше лоя инсайда,2022-12-15 04:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Первый восходящий H4 FVG,2022-12-15 08:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Восходящий H4 FVG выше лоя инсайда,2022-12-15 08:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Импульсная свеча H4 выше лоя инсайда,2022-12-15 16:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Первый восходящий D1 FVG,2022-12-17 00:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Восходящий D1 FVG выше лоя инсайда,2022-12-17 00:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Ордерблок D1: закрытие выше OB,2022-12-17 00:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Импульсная свеча D1 выше лоя инсайда,2022-12-17 00:00:00,True,True,True,False
+ETHUSDT,high,2022-12-05,Поглощение D1 с закрытием выше лоя инсайда,2022-12-26 00:00:00,True,False,False,True
+ETHUSDT,high,2022-12-05,Ордерблок H1: вход на ретесте OB,2023-01-09 09:30:00,False,False,False,True
+ETHUSDT,high,2022-12-05,Ордерблок D1: вход на ретесте OB,2023-01-04 03:00:00,True,False,False,True
+ETHUSDT,high,2022-12-26,Первый восходящий H1 FVG,2023-01-04 21:00:00,False,False,False,True
+ETHUSDT,high,2022-12-26,Ордерблок H1: закрытие выше OB,2023-01-04 21:00:00,False,False,False,True
+ETHUSDT,high,2022-12-26,Поглощение H1 у лоя,2023-01-06 21:00:00,False,False,False,True
+ETHUSDT,high,2022-12-26,Поглощение H4 у лоя,2023-01-05 04:00:00,False,False,False,True
+ETHUSDT,high,2022-12-26,Ордерблок H1: вход на ретесте OB,2023-01-04 21:00:00,False,False,False,True
+ETHUSDT,high,2023-01-23,Ордерблок H1: закрытие выше OB,2023-02-02 20:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Поглощение H1 у лоя,2023-02-02 22:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Поглощение H1 с закрытием выше лоя инсайда,2023-02-02 22:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Импульсная свеча H1 выше лоя инсайда,2023-02-02 22:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Первый восходящий H1 FVG,2023-02-02 23:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Восходящий H1 FVG выше лоя инсайда,2023-02-03 04:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Ордерблок H4: закрытие выше OB,2023-02-03 00:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Импульсная свеча H4 выше лоя инсайда,2023-02-03 00:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Первый восходящий H4 FVG,2023-02-03 04:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Восходящий H4 FVG выше лоя инсайда,2023-02-05 20:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Поглощение H4 с закрытием выше лоя инсайда,2023-02-07 16:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Поглощение D1 у лоя,2023-02-06 00:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Поглощение D1 с закрытием выше лоя инсайда,2023-02-06 00:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Ордерблок D1: закрытие выше OB,2023-02-07 00:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Импульсная свеча D1 выше лоя инсайда,2023-02-10 00:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Первый восходящий D1 FVG,2023-02-11 00:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Восходящий D1 FVG выше лоя инсайда,2023-02-11 00:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Ордерблок H1: вход на ретесте OB,2023-02-02 20:45:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Ордерблок H4: вход на ретесте OB,2023-02-03 00:00:00,True,True,True,False
+ETHUSDT,high,2023-01-23,Ордерблок D1: вход на ретесте OB,2023-02-07 01:15:00,True,True,True,False
+ETHUSDT,high,2023-11-13,Первый восходящий H1 FVG,2023-12-03 13:00:00,False,False,False,True
+ETHUSDT,high,2023-12-18,Поглощение H1 у лоя,2023-12-27 20:00:00,True,False,True,True
+ETHUSDT,high,2023-12-18,Первый восходящий H1 FVG,2023-12-28 06:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Ордерблок H1: закрытие выше OB,2023-12-28 07:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Поглощение H1 с закрытием выше лоя инсайда,2023-12-29 16:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Импульсная свеча H1 выше лоя инсайда,2023-12-29 16:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Восходящий H1 FVG выше лоя инсайда,2023-12-29 18:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Поглощение H4 у лоя,2023-12-28 16:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Ордерблок H4: закрытие выше OB,2023-12-28 16:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Поглощение H4 с закрытием выше лоя инсайда,2023-12-29 08:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Первый восходящий H4 FVG,2024-01-02 20:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Импульсная свеча H4 выше лоя инсайда,2024-01-03 12:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Восходящий H4 FVG выше лоя инсайда,2024-01-03 20:00:00,True,False,False,True
+ETHUSDT,high,2023-12-18,Первый восходящий D1 FVG,2023-12-31 00:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Восходящий D1 FVG выше лоя инсайда,2023-12-31 00:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Ордерблок D1: закрытие выше OB,2024-01-04 00:00:00,True,False,False,True
+ETHUSDT,high,2023-12-18,Импульсная свеча D1 выше лоя инсайда,2024-01-04 00:00:00,True,False,False,True
+ETHUSDT,high,2023-12-18,Поглощение D1 у лоя,2024-01-15 00:00:00,False,False,False,True
+ETHUSDT,high,2023-12-18,Ордерблок H1: вход на ретесте OB,2023-12-28 07:00:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Ордерблок H4: вход на ретесте OB,2023-12-28 16:45:00,True,True,True,True
+ETHUSDT,high,2023-12-18,Ордерблок D1: вход на ретесте OB,2024-01-04 00:00:00,True,False,False,True
+ETHUSDT,high,2024-01-15,Поглощение H1 у лоя,2024-02-14 13:00:00,False,False,False,True
+ETHUSDT,high,2024-01-15,Первый восходящий H1 FVG,2024-02-14 17:00:00,False,False,False,True
+ETHUSDT,high,2024-01-15,Ордерблок H1: закрытие выше OB,2024-02-15 22:00:00,False,False,False,True
+ETHUSDT,high,2024-01-15,Поглощение H4 у лоя,2024-02-15 08:00:00,False,False,False,True
+ETHUSDT,high,2024-01-15,Ордерблок H4: закрытие выше OB,2024-02-16 20:00:00,False,False,False,True
+ETHUSDT,high,2024-01-15,Ордерблок H1: вход на ретесте OB,2024-02-15 22:00:00,False,False,False,True
+ETHUSDT,high,2024-01-15,Ордерблок H4: вход на ретесте OB,2024-02-16 20:15:00,False,False,False,True
+ETHUSDT,high,2024-01-29,Ордерблок H1: закрытие выше OB,2024-02-09 15:00:00,False,False,False,True
+ETHUSDT,high,2024-01-29,Первый восходящий H1 FVG,2024-02-09 16:00:00,False,False,False,True
+ETHUSDT,high,2024-01-29,Поглощение H4 у лоя,2024-02-11 16:00:00,False,False,False,True
+ETHUSDT,high,2024-01-29,Ордерблок H4: закрытие выше OB,2024-02-11 16:00:00,False,False,False,True
+ETHUSDT,high,2024-01-29,Ордерблок H1: вход на ретесте OB,2024-02-09 15:30:00,False,False,False,True
+ETHUSDT,high,2024-01-29,Ордерблок H4: вход на ретесте OB,2024-02-11 16:30:00,False,False,False,True
+ETHUSDT,high,2024-04-15,Ордерблок H1: закрытие выше OB,2024-05-21 18:00:00,False,False,False,False
+ETHUSDT,high,2024-04-15,Первый восходящий H1 FVG,2024-05-21 19:00:00,False,False,False,False
+ETHUSDT,high,2024-04-15,Поглощение H4 у лоя,2024-05-22 08:00:00,False,False,False,False
+ETHUSDT,high,2024-04-15,Ордерблок H4: закрытие выше OB,2024-05-24 00:00:00,False,False,False,False
+ETHUSDT,high,2024-04-15,Первый восходящий H4 FVG,2024-05-24 12:00:00,False,False,False,False
+ETHUSDT,high,2024-04-15,Ордерблок H1: вход на ретесте OB,2024-05-21 22:00:00,False,False,False,False
+ETHUSDT,high,2024-04-15,Ордерблок H4: вход на ретесте OB,2024-05-24 00:30:00,False,False,False,False
+ETHUSDT,high,2024-05-06,Ордерблок H1: закрытие выше OB,2024-05-21 05:00:00,False,False,False,True
+ETHUSDT,high,2024-05-06,Первый восходящий H1 FVG,2024-05-21 06:00:00,False,False,False,True
+ETHUSDT,high,2024-05-06,Поглощение H4 у лоя,2024-05-21 08:00:00,False,False,False,True
+ETHUSDT,high,2024-05-06,Ордерблок H4: закрытие выше OB,2024-05-24 00:00:00,False,False,False,True
+ETHUSDT,high,2024-05-06,Первый восходящий H4 FVG,2024-05-24 12:00:00,False,False,False,True
+ETHUSDT,high,2024-05-06,Ордерблок H1: вход на ретесте OB,2024-05-21 06:00:00,False,False,False,True
+ETHUSDT,high,2024-05-06,Ордерблок H4: вход на ретесте OB,2024-05-24 00:30:00,False,False,False,True
+ETHUSDT,high,2024-07-08,Ордерблок H1: закрытие выше OB,2024-07-20 01:00:00,False,False,True,False
+ETHUSDT,high,2024-07-08,Первый восходящий H1 FVG,2024-07-20 02:00:00,False,False,True,False
+ETHUSDT,high,2024-07-08,Ордерблок H1: вход на ретесте OB,2024-07-20 03:15:00,False,False,True,False
+ETHUSDT,high,2024-09-09,Поглощение H1 у лоя,2024-09-21 02:00:00,False,False,False,False
+ETHUSDT,high,2024-09-09,Ордерблок H1: закрытие выше OB,2024-09-21 02:00:00,False,False,False,False
+ETHUSDT,high,2024-09-09,Первый восходящий H1 FVG,2024-09-21 03:00:00,False,False,False,False
+ETHUSDT,high,2024-09-09,Поглощение H4 у лоя,2024-09-20 20:00:00,False,False,False,False
+ETHUSDT,high,2024-09-09,Ордерблок H1: вход на ретесте OB,2024-09-21 07:00:00,False,False,False,False
+ETHUSDT,high,2024-10-07,Первый восходящий H1 FVG,2024-10-16 08:00:00,False,False,False,True
+ETHUSDT,high,2024-10-07,Поглощение D1 у лоя,2024-10-18 00:00:00,False,False,False,True
+ETHUSDT,high,2025-05-19,Первый восходящий H1 FVG,2025-05-29 06:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Поглощение H1 с закрытием выше лоя инсайда,2025-05-29 09:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Восходящий H1 FVG выше лоя инсайда,2025-05-29 13:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Ордерблок H1: закрытие выше OB,2025-05-29 13:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Импульсная свеча H1 выше лоя инсайда,2025-05-30 01:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Поглощение H1 у лоя,2025-06-10 22:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Ордерблок H4: закрытие выше OB,2025-05-29 16:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Импульсная свеча H4 выше лоя инсайда,2025-05-29 16:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Первый восходящий H4 FVG,2025-05-29 20:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Восходящий H4 FVG выше лоя инсайда,2025-05-29 20:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Поглощение H4 с закрытием выше лоя инсайда,2025-05-30 00:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Поглощение H4 у лоя,2025-06-11 12:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Первый восходящий D1 FVG,2025-06-01 00:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Восходящий D1 FVG выше лоя инсайда,2025-06-01 00:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Поглощение D1 с закрытием выше лоя инсайда,2025-06-06 00:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Импульсная свеча D1 выше лоя инсайда,2025-06-06 00:00:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Ордерблок D1: закрытие выше OB,2025-06-13 00:00:00,True,True,True,False
+ETHUSDT,high,2025-05-19,Ордерблок H1: вход на ретесте OB,2025-06-10 00:15:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Ордерблок H4: вход на ретесте OB,2025-05-29 17:45:00,True,False,True,False
+ETHUSDT,high,2025-05-19,Ордерблок D1: вход на ретесте OB,2025-06-16 14:30:00,True,True,True,False
+ETHUSDT,high,2025-06-23,Ордерблок H1: закрытие выше OB,2025-07-10 10:00:00,False,False,False,True
+ETHUSDT,high,2025-06-23,Поглощение H1 у лоя,2025-07-11 00:00:00,False,False,False,True
+ETHUSDT,high,2025-06-23,Первый восходящий H1 FVG,2025-07-11 17:00:00,False,False,False,True
+ETHUSDT,high,2025-06-23,Поглощение H4 у лоя,2025-07-11 16:00:00,False,False,False,True
+ETHUSDT,high,2025-06-23,Ордерблок H4: закрытие выше OB,2025-07-11 16:00:00,False,False,False,True
+ETHUSDT,high,2025-06-23,Первый восходящий H4 FVG,2025-07-12 20:00:00,False,False,False,True
+ETHUSDT,high,2025-06-23,Поглощение D1 у лоя,2025-07-13 00:00:00,False,False,False,True
+ETHUSDT,high,2025-06-23,Ордерблок H1: вход на ретесте OB,2025-07-10 10:00:00,False,False,False,True
+ETHUSDT,high,2025-06-23,Ордерблок H4: вход на ретесте OB,2025-07-11 16:00:00,False,False,False,True
+ETHUSDT,high,2025-11-24,Ордерблок H1: закрытие выше OB,2025-12-04 05:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Первый восходящий H1 FVG,2025-12-04 06:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Поглощение H1 с закрытием выше лоя инсайда,2025-12-05 17:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Импульсная свеча H1 выше лоя инсайда,2025-12-05 17:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Восходящий H1 FVG выше лоя инсайда,2025-12-05 18:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Поглощение H1 у лоя,2025-12-09 20:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Ордерблок H4: закрытие выше OB,2025-12-04 20:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Первый восходящий H4 FVG,2025-12-06 00:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Восходящий H4 FVG выше лоя инсайда,2025-12-06 00:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Поглощение H4 с закрытием выше лоя инсайда,2025-12-06 20:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Импульсная свеча H4 выше лоя инсайда,2025-12-08 00:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Поглощение D1 у лоя,2025-12-12 00:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Ордерблок D1: закрытие выше OB,2025-12-12 00:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Первый восходящий D1 FVG,2025-12-13 00:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Импульсная свеча D1 выше лоя инсайда,2025-12-13 00:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Восходящий D1 FVG выше лоя инсайда,2025-12-17 00:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Поглощение D1 с закрытием выше лоя инсайда,2025-12-24 00:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Ордерблок H1: вход на ретесте OB,2025-12-04 05:00:00,True,False,False,False
+ETHUSDT,high,2025-11-24,Ордерблок H4: вход на ретесте OB,2025-12-05 02:15:00,True,False,False,False
+ETHUSDT,high,2025-12-22,Первый восходящий H1 FVG,2026-01-05 06:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Ордерблок H1: закрытие выше OB,2026-01-05 06:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Поглощение H1 у лоя,2026-01-06 00:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Поглощение H1 с закрытием выше лоя инсайда,2026-01-08 15:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Импульсная свеча H1 выше лоя инсайда,2026-01-09 15:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Поглощение H4 у лоя,2026-01-06 08:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Ордерблок H4: закрытие выше OB,2026-01-06 08:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Первый восходящий H4 FVG,2026-01-07 16:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Поглощение D1 у лоя,2026-01-08 00:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Ордерблок D1: закрытие выше OB,2026-01-08 00:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Ордерблок H1: вход на ретесте OB,2026-01-05 08:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Ордерблок H4: вход на ретесте OB,2026-01-06 08:00:00,False,False,True,False
+ETHUSDT,high,2025-12-22,Ордерблок D1: вход на ретесте OB,2026-01-08 02:00:00,False,False,True,False
+ETHUSDT,high,2026-03-30,Первый восходящий H1 FVG,2026-04-08 15:00:00,False,False,False,True
+ETHUSDT,high,2026-03-30,Ордерблок H1: закрытие выше OB,2026-04-08 15:00:00,False,False,False,True
+ETHUSDT,high,2026-03-30,Поглощение H1 с закрытием выше лоя инсайда,2026-04-09 14:00:00,False,False,False,True
+ETHUSDT,high,2026-03-30,Импульсная свеча H1 выше лоя инсайда,2026-04-09 14:00:00,False,False,False,True
+ETHUSDT,high,2026-03-30,Поглощение H1 у лоя,2026-04-11 21:00:00,False,False,False,True
+ETHUSDT,high,2026-03-30,Первый восходящий H4 FVG,2026-04-09 04:00:00,False,False,False,True
+ETHUSDT,high,2026-03-30,Ордерблок H4: закрытие выше OB,2026-04-12 04:00:00,False,False,False,True
+ETHUSDT,high,2026-03-30,Поглощение D1 у лоя,2026-04-13 00:00:00,False,False,False,True
+ETHUSDT,high,2026-03-30,Ордерблок D1: закрытие выше OB,2026-04-13 00:00:00,False,False,False,True
+ETHUSDT,high,2026-03-30,Ордерблок H1: вход на ретесте OB,2026-04-08 15:30:00,False,False,False,True
+ETHUSDT,high,2026-08-03,Поглощение H1 у лоя,2026-08-22 02:00:00,False,False,False,True
+ETHUSDT,high,2026-08-03,Ордерблок H1: закрытие выше OB,2026-08-22 02:00:00,False,False,False,True
+ETHUSDT,high,2026-08-03,Первый восходящий H1 FVG,2026-08-22 07:00:00,False,False,False,True
+ETHUSDT,high,2026-08-03,Первый восходящий H4 FVG,2026-08-22 12:00:00,False,False,False,True
+ETHUSDT,high,2026-08-03,Ордерблок H4: закрытие выше OB,2026-08-23 08:00:00,False,False,False,True
+ETHUSDT,high,2026-08-03,Ордерблок H1: вход на ретесте OB,2026-08-22 02:00:00,False,False,False,True
+ETHUSDT,high,2026-08-03,Ордерблок H4: вход на ретесте OB,2026-08-23 08:00:00,False,False,False,True
+ETHUSDT,high,2026-08-10,Поглощение H1 у лоя,2026-08-22 02:00:00,False,False,False,True
+ETHUSDT,high,2026-08-10,Ордерблок H1: закрытие выше OB,2026-08-22 02:00:00,False,False,False,True
+ETHUSDT,high,2026-08-10,Первый восходящий H1 FVG,2026-08-22 07:00:00,False,False,False,True
+ETHUSDT,high,2026-08-10,Первый восходящий H4 FVG,2026-08-22 12:00:00,False,False,False,True
+ETHUSDT,high,2026-08-10,Ордерблок H4: закрытие выше OB,2026-08-23 08:00:00,False,False,False,True
+ETHUSDT,high,2026-08-10,Ордерблок H1: вход на ретесте OB,2026-08-22 02:00:00,False,False,False,True
+ETHUSDT,high,2026-08-10,Ордерблок H4: вход на ретесте OB,2026-08-23 08:00:00,False,False,False,True
