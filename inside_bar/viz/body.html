@@ -1,0 +1,101 @@
+<main>
+<header>
+<div class="eyebrow">ETHUSDT Perp · Binance · время UTC · снятие лоя матери → возврат в H4 FVG → шорт по инверсии M15 FVG</div>
+<h1>Шорты ETH из H4 FVG: все случаи</h1>
+<p>Каждая ситуация показана на четырёх таймфреймах. Неделя — мать и инсайд, D1 и H4 — снятие лоя и зона H4 FVG, M15 — сам вход. Стоп ставится над локальным хаем отката, цель — новый лой ниже лоя манипуляции.</p>
+<div class="legend" aria-label="Обозначения">
+<span><i style="border-color:var(--mother)"></i>Хай / лой матери</span>
+<span><i class="dash" style="border-color:var(--ib)"></i>Хай / лой инсайда</span>
+<span><i style="border-color:var(--zone)"></i>Зона H4 FVG</span>
+<span><i class="dash" style="border-color:var(--zone)"></i>M15 FVG (низ)</span>
+<span><i style="border-color:var(--entry)"></i>Вход в шорт</span>
+<span><i style="border-color:var(--stop)"></i>Стоп</span>
+<span><i class="dash" style="border-color:var(--sweep)"></i>Лой манипуляции</span>
+<span><i class="dash" style="border-color:var(--target)"></i>Лой матери − 1 диапазон</span>
+</div>
+</header>
+<section class="groups" id="groups"></section>
+<section class="summary" id="summary" aria-live="polite"></section>
+<section class="grid">
+<article class="card"><header><h3>W · неделя</h3><small>мать, инсайд, неделя снятия</small></header><div class="chart" id="cW"></div></article>
+<article class="card"><header><h3>D1 · день</h3><small>снятие лоя и возврат в зону</small></header><div class="chart" id="cD"></div></article>
+<article class="card"><header><h3>H4</h3><small>зона H4 FVG, вход и стоп</small></header><div class="chart" id="cH4"></div></article>
+<article class="card"><header><h3>M15</h3><small>локальный хай, M15 FVG, вход</small></header><div class="chart" id="cM15"></div></article>
+</section>
+<p class="foot">Глубина выноса — насколько цена ушла под лой матери, в долях диапазона материнской недели. Прибыль к риску — расстояние от входа до лоя манипуляции, делённое на расстояние до стопа. Колёсико мыши и перетаскивание двигают график.</p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+<script>
+const CASES = __DATA__;
+const GROUPS = [['now','Сейчас'],['deep','Глубокий вынос ≥ 0,2 — все 6 в стоп'],['shallow','Мелкий вынос < 0,2 — 5 из 8 до лоя']];
+const LINES = {
+  W:  [['moH','Хай матери','mother',0],['moL','Лой матери','mother',0],['ibH','Хай IB','ib',2],['ibL','Лой IB','ib',2],['E1','L − 1R','target',2]],
+  D:  [['moH','Хай матери','mother',0],['moL','Лой матери','mother',0],['mid','Середина','ib',1],['zt','H4 FVG','zone',0],['zb','','zone',0],['sweep','Лой манип.','sweep',2],['E1','L − 1R','target',2]],
+  H4: [['moL','Лой матери','mother',0],['mid','Середина','ib',1],['zt','H4 FVG верх','zone',0],['zb','H4 FVG низ','zone',0],['entry','Вход','entry',0],['stop','Стоп','stop',0],['sweep','Лой манип.','sweep',2]],
+  M15:[['zt','H4 FVG верх','zone',0],['zb','H4 FVG низ','zone',0],['f15b','M15 FVG','zone',2],['entry','Вход','entry',0],['stop','Стоп','stop',0],['sweep','Лой манип.','sweep',2],['moL','Лой матери','mother',0]]
+};
+const MK = {sweep:['belowBar','arrowUp','sweep','Лой'],lh:['aboveBar','arrowDown','ib','Лок. хай'],entry:['aboveBar','arrowDown','entry','Шорт'],stop:['aboveBar','square','stop','Стоп'],win:['belowBar','circle','target','Цель']};
+const fmt = (v,d=2)=>v==null?'—':Number(v).toLocaleString('ru-RU',{minimumFractionDigits:d,maximumFractionDigits:d});
+const css = n => getComputedStyle(document.documentElement).getPropertyValue('--'+n).trim();
+let current = 'now', charts = [];
+try{ const s = localStorage.getItem('ethShortCase'); if (s && CASES.some(c=>c.id===s)) current = s; }catch(e){}
+
+function renderChips(){
+  const g = document.getElementById('groups'); g.innerHTML='';
+  for (const [gid,label] of GROUPS){
+    const items = CASES.filter(c=>c.group===gid); if(!items.length) continue;
+    const box = document.createElement('div'); box.className='group';
+    const h = document.createElement('h2'); h.textContent = label; box.appendChild(h);
+    const row = document.createElement('div'); row.className='chips'; box.appendChild(row);
+    for (const c of items){
+      const b = document.createElement('button'); b.type='button'; b.className='chip'; b.id='case-'+c.id;
+      b.setAttribute('aria-pressed', c.id===current);
+      const tag = c.current ? '<span class="tag now">ждём</span>' : (c.res.win ? '<span class="tag win">+'+fmt(c.res.rr,1)+'R</span>' : '<span class="tag stop">стоп</span>');
+      b.innerHTML = c.title + tag;
+      b.onclick = ()=>{ current=c.id; try{localStorage.setItem('ethShortCase',c.id)}catch(e){}; renderChips(); renderCase(); };
+      row.appendChild(b);
+    }
+    g.appendChild(box);
+  }
+}
+function renderSummary(c){
+  const s = document.getElementById('summary'); const L=c.lv, r=c.res;
+  const item=(k,v)=>'<div><span class="k">'+k+'</span><span class="v">'+v+'</span></div>';
+  let html = item('Мать', c.mo_week) + item('Лой / хай матери', fmt(L.moL)+' / '+fmt(L.moH)) + item('Глубина выноса', fmt(r.depth)) + item('Зона H4 FVG', fmt(L.zb)+' – '+fmt(L.zt));
+  let note;
+  if (c.current){ note = 'Цена ниже зоны 2623,83–2689,77. Если вернётся в неё, ETH при таком глубоком выносе ни разу не дал рабочего шорта по M15. Для лонга ждём закрытия H4 выше 2689,77 и недели выше 2626.'; }
+  else {
+    html += item('Вход / стоп', fmt(L.entry)+' / '+fmt(L.stop)) + item('Прибыль к риску', fmt(r.rr,1)) + item('Итог', r.win?('цель за '+fmt(r.hours,1)+' ч'):('стоп за '+fmt(r.hours,1)+' ч'));
+    note = r.win ? 'Мелкий вынос: лой манипуляции рядом, цена дошла до него раньше стопа.' : (c.group==='deep' ? 'Глубокий вынос: цена дала небольшой плюс, затем выбила стоп над локальным хаем и пошла вверх.' : 'Мелкий вынос, но стоп выбило раньше, чем цена дошла до лоя.');
+  }
+  s.innerHTML = html + '<p class="note">'+note+'</p>';
+}
+function lastBarIdx(bars, t){ let lo=0, hi=bars.length-1, ans=-1; while(lo<=hi){const m=(lo+hi)>>1; if(bars[m][0]<=t){ans=m;lo=m+1}else hi=m-1;} return ans; }
+function makeChart(el, bars, tf, c){
+  const chart = LightweightCharts.createChart(el, {
+    autoSize:true, layout:{background:{type:'solid',color:css('panel')}, textColor:css('ink2'), fontFamily:'IBM Plex Mono, ui-monospace, monospace', fontSize:11},
+    grid:{vertLines:{color:css('grid')}, horzLines:{color:css('grid')}}, rightPriceScale:{borderColor:css('line')},
+    timeScale:{borderColor:css('line'), timeVisible: tf==='H4'||tf==='M15', secondsVisible:false}, crosshair:{mode:0},
+    localization:{locale:'ru-RU', priceFormatter:p=>fmt(p)}
+  });
+  const s = chart.addCandlestickSeries({upColor:css('up'), downColor:css('down'), borderUpColor:css('up'), borderDownColor:css('down'), wickUpColor:css('up'), wickDownColor:css('down'), priceLineVisible:false, lastValueVisible:false});
+  s.setData(bars.map(b=>({time:b[0], open:b[1], high:b[2], low:b[3], close:b[4]})));
+  for (const [k,label,col,style] of LINES[tf]){ const v=c.lv[k]; if(v==null) continue;
+    s.createPriceLine({price:v, color:css(col), lineWidth:(k==='entry'||k==='stop'||k==='zt'||k==='zb')?2:1, lineStyle:style, axisLabelVisible:true, title:label}); }
+  const marks = [];
+  for (const m of c.mk){ const i = lastBarIdx(bars, m.t); if (i<0 || m.t > bars[bars.length-1][0] + 7*86400) continue;
+    const [pos,shape,col,text] = MK[m.k]; marks.push({time:bars[i][0], position:pos, shape, color:css(col), text}); }
+  marks.sort((a,b)=>a.time-b.time); s.setMarkers(marks);
+  chart.timeScale().fitContent();
+  return chart;
+}
+function renderCase(){
+  charts.forEach(ch=>ch.remove()); charts=[];
+  const c = CASES.find(x=>x.id===current); renderSummary(c);
+  for (const [tf,id] of [['W','cW'],['D','cD'],['H4','cH4'],['M15','cM15']]){ const el=document.getElementById(id); el.innerHTML=''; charts.push(makeChart(el, c[tf], tf, c)); }
+}
+function boot(){ renderChips(); renderCase(); }
+if (window.LightweightCharts) boot(); else window.addEventListener('load', boot);
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', renderCase);
+new MutationObserver(renderCase).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+</script>
