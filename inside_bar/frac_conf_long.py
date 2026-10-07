@@ -1,7 +1,8 @@
 """Лонг на подтверждении ПЕРВОГО H4 фрактального лоя после пересечения лоя матери (центр фрактала может быть свечой пересечения).
 Вход — закрытие 2-й свечи H4 справа от фрактала; стоп — под фрактальным лоем −0,1%; цель — низ зоны H4 FVG (нетронутой).
 Издержки 0,1%. python frac_conf_long.py <dir_pkl> <events.csv> <out.csv>"""
-import sys, numpy as np, pandas as pd
+import sys, os, numpy as np, pandas as pd
+NF = int(os.environ.get('FRAC', '5')) // 2   # 5 — фрактал 2+2, 3 — фрактал 1+1
 SRC, EV, OUT = sys.argv[1:4]
 E = pd.read_csv(EV); E = E[~E.open]
 cache = {}; rows = []
@@ -16,12 +17,12 @@ for e in E.itertuples():
     j0 = b4.index.searchsorted(t0.floor('4h'))
     F = b4.iloc[max(0, j0 - 2):j0 + 84]; fh4, fl4, fc4, fi4 = F.h.values, F.l.values, F.c.values, F.index
     k0 = j0 - max(0, j0 - 2); kf = None
-    for k in range(max(2, k0), len(F) - 2):
-        if fl4[k] < L and fl4[k] < fl4[k - 1] and fl4[k] < fl4[k - 2] and fl4[k] <= fl4[k + 1] and fl4[k] <= fl4[k + 2]:
+    for k in range(max(NF, k0), len(F) - NF):
+        if fl4[k] < L and all(fl4[k] < fl4[k - d] for d in range(1, NF + 1)) and all(fl4[k] <= fl4[k + d] for d in range(1, NF + 1)):
             if fl4[k] > m.loc[t0:fi4[k] + pd.Timedelta('4h') - pd.Timedelta('15min')].l.min() + 1e-12: continue
             kf = k; break
     if kf is None: continue
-    k = kf; flow = fl4[k]; tconf = fi4[k + 2] + pd.Timedelta('4h'); entry = fc4[k + 2]
+    k = kf; flow = fl4[k]; tconf = fi4[k + NF] + pd.Timedelta('4h'); entry = fc4[k + NF]
     B = b4.loc[:fi4[k]]; xb = len(B) - 1; hv, lv, cv = B.h.values, B.l.values, B.c.values; zone = None
     for kk in range(xb, max(2, xb - 84), -1):
         if hv[kk] < lv[kk - 2] and lv[kk - 2] >= L and not (cv[kk + 1:xb + 1] > lv[kk - 2]).any():

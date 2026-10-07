@@ -3,7 +3,8 @@
 Событие: первое снятие этого лоя (15m лой ниже), пока зона H4 FVG не тронута. Затем бычий шифт M15 в течение 24 ч
 (закрытие выше последнего M15 фрактального хая перед локальным лоем; лой пересчитывается). Стоп под локальным лоем −0,1%,
 цель — низ зоны. Издержки 0,1%. Одна сделка на событие. python first_h4low_long.py <dir_pkl> <events.csv> <out.csv>"""
-import sys, numpy as np, pandas as pd
+import sys, os, numpy as np, pandas as pd
+NF = int(os.environ.get('FRAC', '5')) // 2   # 5 — фрактал 2+2, 3 — фрактал 1+1
 SRC, EV, OUT = sys.argv[1:4]
 E = pd.read_csv(EV); E = E[~E.open]
 cache = {}; rows = []
@@ -19,13 +20,13 @@ for e in E.itertuples():
     F = b4.iloc[max(0, j0 - 2):j0 + 84]; fh4, fl4, fi4 = F.h.values, F.l.values, F.index
     k0 = j0 - max(0, j0 - 2)                                          # центр фрактала может быть уже на свече пересечения
     k_found = None
-    for k in range(max(2, k0), len(F) - 2):
-        if fl4[k] < L and fl4[k] < fl4[k - 1] and fl4[k] < fl4[k - 2] and fl4[k] <= fl4[k + 1] and fl4[k] <= fl4[k + 2]:
+    for k in range(max(NF, k0), len(F) - NF):
+        if fl4[k] < L and all(fl4[k] < fl4[k - d] for d in range(1, NF + 1)) and all(fl4[k] <= fl4[k + d] for d in range(1, NF + 1)):
             if fl4[k] > m.loc[t0:fi4[k] + pd.Timedelta('4h') - pd.Timedelta('15min')].l.min() + 1e-12: continue
             k_found = k; break
     r = dict(sym=e.sym, side=e.side, ib_week=e.ib_week, stage='нет фрактала')
     if k_found is None: rows.append(r); continue
-    k = k_found; flow = fl4[k]; tconf = fi4[k + 2] + pd.Timedelta('4h')
+    k = k_found; flow = fl4[k]; tconf = fi4[k + NF] + pd.Timedelta('4h')
     if m.loc[fi4[k]:tconf - pd.Timedelta('15min')].l.min() < flow: rows.append(r); continue
     # зона на момент фрактала
     B = b4.loc[:fi4[k]]; xb = len(B) - 1; hv, lv, cv = B.h.values, B.l.values, B.c.values; zone = None
