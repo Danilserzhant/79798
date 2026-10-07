@@ -94,6 +94,47 @@ conf_prob_section = f'''<section>
 <p class="note">Закрытие ниже 2626 на любом таймфрейме вероятностей почти не меняет: цена и так уже под уровнем. Продолжение до 2445 остаётся около 50/50, до 2355 — около 25%.</p>
 </section>'''
 
+IF = pd.concat([pd.read_csv('results/mother/ifvg_prob_state.csv').assign(src='state'),
+                pd.read_csv('results/mother/ifvg_prob_state_split.csv').assign(src='state'),
+                pd.read_csv('results/mother/ifvg_prob_first_split.csv').assign(src='first')])
+IF = IF[IF['sample'] == 'low']
+def ifrow(conf, src, label, nev):
+    r = IF[(IF.conf == conf) & (IF.src == src)].iloc[0]
+    small = ' class="small"' if r.n < 30 else ''
+    return (f'<tr{small}><td>{label}</td><td class="num">{f(r.n/nev*100,0) + "%" if nev else "—"}</td><td class="num">{int(r.n)}</td>'
+            f'<td class="num">{f(r.mid_before_newlow,0)}%</td><td class="num">{f(r.H_before_newlow,0)}%</td><td class="num">{f(r.reach_H,0)}%</td>'
+            f'<td class="num">{f(r.reach_E1,0)}%</td><td class="num">{f(r.wk_close_inside,0)}%</td></tr>')
+c4 = 'Инверсия последнего H4 FVG перед экстремумом'
+rc4 = P[(P['sample'] == 'low') & (P.conf == 'Реклейм: закрытие H4 обратно выше L')].iloc[0]
+NFIRST = len(El)
+ifvg_section = f'''<section>
+<h2>Инверсия последнего H4 FVG перед лоем манипуляции</h2>
+<p>Правило: берём последний медвежий FVG на H4 (хай свечи ниже лоя свечи за две до неё), сформированный до лоя манипуляции и ещё не перекрытый. Подтверждение — первое закрытие H4 выше верха этого FVG. Если цена ставит новый лой, экстремум и FVG пересчитываются. Для сравнения — то же на H1 и D1 и обычное закрытие H4 выше 2626.</p>
+<div class="tw"><table>
+<tr><th>Подтверждение · из текущего состояния</th><th>Сработало</th><th>n</th><th>Середина 2716 раньше нового лоя</th><th>Хай 2807 раньше нового лоя</th><th>Дойдёт до хая</th><th>Дойдёт до 2445</th><th>Неделя закроется выше 2626</th></tr>
+<tr class="base"><td>Без подтверждения</td><td class="num">—</td><td class="num">{NLOW}</td><td class="num">—</td><td class="num">—</td><td class="num">{f(now["low_side"]["reach_H"],0)}%</td><td class="num">{f(now["low_side"]["reach_E1"],0)}%</td><td class="num">{f(now["low_side"]["wk_close_inside"],0)}%</td></tr>
+{ifrow(c4, 'state', '<b>Инверсия H4 FVG — все случаи</b>', NLOW)}
+{ifrow(c4 + ' · верх FVG ниже L', 'state', '…FVG ниже лоя матери', NLOW)}
+{ifrow(c4 + ' · верх FVG выше L', 'state', '…FVG выше лоя матери', NLOW)}
+{ifrow('Инверсия последнего H1 FVG перед экстремумом', 'state', 'Инверсия H1 FVG', NLOW)}
+{ifrow('Инверсия последнего D1 FVG перед экстремумом', 'state', 'Инверсия D1 FVG', NLOW)}
+<tr><td>Для сравнения: закрытие H4 выше 2626</td><td class="num">{f(rc4.n/NLOW*100,0)}%</td><td class="num">{int(rc4.n)}</td><td class="num">{f(rc4.mid_before_newlow,0)}%</td><td class="num">{f(rc4.H_before_newlow,0)}%</td><td class="num">{f(rc4.reach_H,0)}%</td><td class="num">{f(rc4.reach_E1,0)}%</td><td class="num">{f(rc4.wk_close_inside,0)}%</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>То же от первого снятия лоя матери</th><th>Сработало</th><th>n</th><th>Середина раньше нового лоя</th><th>Хай раньше нового лоя</th><th>Дойдёт до хая</th><th>Дойдёт до L − 1R</th><th>Неделя закроется выше L</th></tr>
+{ifrow(c4 + ' · верх FVG выше L', 'first', 'Инверсия H4 FVG · FVG выше лоя матери', NFIRST)}
+{ifrow(c4 + ' · верх FVG ниже L', 'first', 'Инверсия H4 FVG · FVG ниже лоя матери', NFIRST)}
+</table></div>
+<ol class="steps">
+<li><b>Всё решает, где стоит FVG.</b> Если верх FVG выше лоя матери, его инверсия означает и возврат за уровень: середина раньше нового лоя 87%, хай 60%, неделя закрывается выше 2626 в 87%. Но из текущего состояния таких случаев всего 15, точность ±25 п.п. На большей выборке от первого снятия (140 случаев): 59% / 31%, неделя выше уровня 86%.</li>
+<li><b>Если FVG ниже лоя матери, инверсия почти ничего не даёт</b>: середина раньше нового лоя 29%, хай 21%, до 2445 цена всё равно доходит в 48%. Это не лучше базы.</li>
+<li><b>Без разделения H4-инверсия слабее простого закрытия H4 выше 2626</b>: в большинстве случаев последний FVG лежит под уровнем.</li>
+</ol>
+<div class="panel verdict">
+<p><b>Что это значит для ETH сейчас.</b> Свеча H4 12:00 UTC ещё не закрыта. Если её хай останется ниже 2605,24, сформируется FVG 2584,74–2605,24. Он ниже лоя матери, и его инверсия (закрытие H4 выше 2605) по статистике слабая. Если хай свечи будет выше 2605,24, последним останется FVG 2623,83–2689,77 с верхом выше лоя матери. Тогда подтверждение — закрытие H4 выше 2689,77, и это сильный вариант. Новый лой ниже 2552 сдвигает экстремум и FVG.</p>
+</div>
+</section>'''
+
 page = f'''<title>ETH: материнская неделя</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -141,6 +182,8 @@ page = f'''<title>ETH: материнская неделя</title>
 </section>
 
 {conf_prob_section}
+
+{ifvg_section}
 
 <section>
 <h2>Методика и оговорки</h2>
