@@ -59,7 +59,7 @@ for e in E.itertuples():
         for k in range(lh_i, max(ext_i + 2, lh_i - 400), -1):
             if l[k] > h[k - 2]:
                 if (c[k + 1:lh_i + 1] < h[k - 2]).any(): continue
-                bot = h[k - 2]; break
+                bot = h[k - 2]; kbot = k; break
         if bot is None or c[i] >= bot: continue
         # сигнал на шорт
         entry, stop = c[i], lh
@@ -69,6 +69,8 @@ for e in E.itertuples():
             j = np.nonzero(mk)[0]; return j[0] if len(j) else 10**9
         iS, i1, i2 = first(fh >= stop), first(fl < ext), first(fl <= L - R)
         risk = stop - entry
+        res.update(lh_t=str(T[lh_i]), ext_t=str(T[ext_i]), fvg15_bot=sg * bot, fvg15_top=sg * l[kbot], fvg15_t=str(T[kbot - 2]),
+                   stop_t=str(f.index[iS]) if iS < 10**9 else None, low_t=str(f.index[i1]) if i1 < 10**9 else None)
         res.update(signal=True, t=str(T[i]), entry=sg * entry, stop=sg * stop, sweep=sg * ext, zone_top=sg * zone[0], zone_bot=sg * zone[1],
                    win_low=i1 < iS, win_E1=i2 < iS, reach_E1=i2 < 10**9, stopped=iS < 10**9,
                    rr_low=(entry - ext) / risk if risk > 0 else np.nan, rr_E1=(entry - (L - R)) / risk if risk > 0 else np.nan)
