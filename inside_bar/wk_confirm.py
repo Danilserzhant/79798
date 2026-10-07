@@ -2,7 +2,7 @@
 python wk_confirm.py <dir_pkl> <events.csv> <signals.csv> <out_prefix>
 Пишет: <out>_sig.csv (сигналы, прошедшие фильтр, вход в момент сигнала),
        <out>_wk.csv (те же, вход на недельном закрытии), <out>_summary.json"""
-import sys, json, numpy as np, pandas as pd
+import sys, os, json, numpy as np, pandas as pd
 SRC, EV, SIG, OUT = sys.argv[1:5]
 E = pd.read_csv(EV); S = pd.read_csv(SIG)
 S = S[S.conf.str.startswith('Инверсия H4')]
@@ -18,6 +18,7 @@ for s in S.itertuples():
     L, H, R = sg * e.L, sg * e.H, e.R
     ibw = pd.Timestamp(s.ib_week)
     ib_l = m.loc[ibw:ibw + pd.Timedelta(weeks=1) - pd.Timedelta('15min')].l.min()
+    if os.environ.get('LEVEL') == 'mother': ib_l = L   # уровни только от матери
     te = pd.Timestamp(s.t_entry)
     we = te.normalize() - pd.Timedelta(days=te.dayofweek) + pd.Timedelta(weeks=1)
     if te == we - pd.Timedelta(weeks=1): we = te            # сигнал ровно на недельном закрытии

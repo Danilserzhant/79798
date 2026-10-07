@@ -1,6 +1,6 @@
 """Глубокий разбор недельных инсайдов ETH: SMT с BTC, стоп, сценарий провала, цели, время, качество IB,
 контекст, объём, дневные и месячные инсайды. python eth_deep.py <dir_with_ETH_BTC_vol_pkl> <events.csv> <out.json>"""
-import sys, json, numpy as np, pandas as pd
+import sys, os, json, numpy as np, pandas as pd
 SRC, EV, OUT = sys.argv[1:4]
 eth, btc = pd.read_pickle(f'{SRC}/ETHUSDT.pkl'), pd.read_pickle(f'{SRC}/BTCUSDT.pkl')
 E = pd.read_csv(EV); E = E[E.sym == 'ETHUSDT']
@@ -22,6 +22,7 @@ for e in E.itertuples():
     L, H, R = sg * e.L, sg * e.H, e.R
     t0 = pd.Timestamp(e.t0); ibw = pd.Timestamp(e.ib_week); mow = ibw - pd.Timedelta(weeks=1)
     ib, mo = W.loc[ibw], W.loc[mow]
+    LV = L if os.environ.get('LEVEL') == 'mother' else ib.l   # уровень подтверждения/отмены
     we = t0.normalize() - pd.Timedelta(days=t0.dayofweek) + pd.Timedelta(weeks=1)
     closed = we <= m.index[-1] + pd.Timedelta('15min')
     wk = m.loc[t0.normalize() - pd.Timedelta(days=t0.dayofweek):we - pd.Timedelta('15min')]
@@ -38,11 +39,11 @@ for e in E.itertuples():
     btc_ib_inside = bool(b_ib.h <= b_mo.h and b_ib.l >= b_mo.l)
     # реклейм: первый час с закрытием выше лоя инсайда после экстремума
     hh = m.loc[ext_t:we].resample('1h').agg(c=('c', 'last')).dropna()
-    rc = hh.index[hh.c.values > ib.l]; rec_t = rc[0] if len(rc) else None
+    rc = hh.index[hh.c.values > LV]; rec_t = rc[0] if len(rc) else None
     # от недельного закрытия
     r = dict(side=e.side, ib_week=e.ib_week, yr=t0.year, open=bool(e.open) or not closed, depth=depth,
-             wk_ok=bool(wkc > ib.l), H0=tH0 < tE0, E10=tE0 < NEVER, reachH0=tH0 < NEVER,
-             smt=not btc_took_ib, btc_took_mo=btc_took_mo, btc_ib_inside=btc_ib_inside,
+             wk_ok=bool(wkc > LV), H0=tH0 < tE0, E10=tE0 < NEVER, reachH0=tH0 < NEVER,
+             smt=not (btc_took_mo if os.environ.get('LEVEL') == 'mother' else btc_took_ib), btc_took_mo=btc_took_mo, btc_ib_inside=btc_ib_inside,
              dow=t0.dayofweek, ext_dow=ext_t.dayofweek, ext_sess=sess(ext_t.hour), rec_sess=sess(rec_t.hour) if rec_t is not None else None,
              ib_ratio=(ib.h - ib.l) / R, ib_close_pos=(ib.c - mo.l) / R, ib_green=bool(ib.c > ib.o),
              double_ib=bool(mow - pd.Timedelta(weeks=1) in W.index and mo.h <= W.loc[mow - pd.Timedelta(weeks=1)].h and mo.l >= W.loc[mow - pd.Timedelta(weeks=1)].l),
@@ -64,7 +65,7 @@ for e in E.itertuples():
             r['dd_below_wkclose_R'] = (wkc - pre.l.min()) / R
         else:                                             # сценарий провала
             nxt = W.loc[we:we + pd.Timedelta(weeks=1)]
-            r['next_wk_back'] = bool(len(nxt) and nxt.c.iloc[0] > ib.l) if len(nxt) else None
+            r['next_wk_back'] = bool(len(nxt) and nxt.c.iloc[0] > LV) if len(nxt) else None
             for k in (0.5, 1, 1.5, 2):
                 r[f'fail_E{k}'] = bool((f4.l <= L - k * R).any())
             r['fail_reachH'] = bool((f4.h >= H).any())

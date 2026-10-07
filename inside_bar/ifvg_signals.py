@@ -4,7 +4,7 @@
 бара ТФ выше верха FVG после экстремума (экстремум пересчитывается на каждом баре — без заглядывания вперёд).
 Для снятия хая — зеркально.
 python ifvg_signals.py <dir_pkl> <events.csv> <out.csv> [state_X]   (state_X — отсчёт от текущего состояния)"""
-import sys, numpy as np, pandas as pd
+import sys, os, numpy as np, pandas as pd
 SRC, EV, OUT = sys.argv[1:4]
 X = float(sys.argv[4]) if len(sys.argv) > 4 and sys.argv[4] != '-' else None
 # SELECT: last — последний FVG; ib — последний FVG, у которого верх >= лоя инсайда (на уровне или выше);
@@ -31,6 +31,7 @@ for e in E.itertuples():
     t0 = pd.Timestamp(e.t0)
     ibw = pd.Timestamp(e.ib_week)
     ib_l = m.loc[ibw:ibw + pd.Timedelta(weeks=1) - pd.Timedelta('15min')].l.min()
+    if os.environ.get('LEVEL') == 'mother': ib_l = L   # уровни только от матери
     lvl_sel = {'ib': ib_l, 'mother': L}.get(SELECT)
     anchor = t0
     if X is not None:

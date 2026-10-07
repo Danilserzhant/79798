@@ -3,7 +3,7 @@
 инсайда (отмена), максимум 4 недели; вариант «+неделя» — неделя сигнала закрылась выше лоя инсайда.
 Экстремум пересчитывается на каждом баре, сигнал только после него. Снятие хая — зеркально.
 python confirm2.py <dir_pkl> <events.csv> <out.csv> [SYM]"""
-import sys, numpy as np, pandas as pd
+import sys, os, numpy as np, pandas as pd
 SRC, EV, OUT = sys.argv[1:4]
 SYM = sys.argv[4] if len(sys.argv) > 4 else None
 E = pd.read_csv(EV); E = E[~E.open]
@@ -23,6 +23,7 @@ for e in E.itertuples():
     L, H, R = sg * e.L, sg * e.H, e.R
     t0 = pd.Timestamp(e.t0); ibw = pd.Timestamp(e.ib_week)
     ib_l = m.loc[ibw:ibw + pd.Timedelta(weeks=1) - pd.Timedelta('15min')].l.min()
+    if os.environ.get('LEVEL') == 'mother': ib_l = L   # уровни только от матери
     # окно: до первого недельного закрытия ниже лоя инсайда, максимум 4 недели
     end = t0 + pd.Timedelta(weeks=4)
     wk = t0.normalize() - pd.Timedelta(days=t0.dayofweek)
