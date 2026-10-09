@@ -10,8 +10,10 @@ python retrace_w.py <dir_pkl_15m> <out_csv> [SYM ...]"""
 import sys, numpy as np, pandas as pd
 SRC, OUT = sys.argv[1:3]
 SYMS = sys.argv[3:] or ['ETHUSDT', 'BTCUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT', 'ADAUSDT', 'DOGEUSDT', 'LTCUSDT', 'LINKUSDT']
-LEVELS = [.236, .382, .5, .618, .705, .79, 1.0]
-HOR = 26                                                     # недель
+import os
+LEVELS = [round(x, 3) for x in np.arange(.1, .96, .05)] + [.382, .618, .705, .79, 1.0]
+PER = os.environ.get('PER', 'W')                             # W — недели, D — дни
+BARS = 672 if PER == 'W' else 96; HOR = 26 if PER == 'W' else 40
 INF = 10**12
 def first(mask, off=0):
     j = np.flatnonzero(mask); return off + j[0] if len(j) else INF
@@ -21,9 +23,9 @@ for s in SYMS:
     for side in ('bull', 'bear'):
         m = raw if side == 'bull' else pd.DataFrame({'o': -raw.o, 'h': -raw.l, 'l': -raw.h, 'c': -raw.c}, index=raw.index)
         h, l = m.h.values, m.l.values
-        k = m.index.normalize() - pd.to_timedelta(m.index.dayofweek, unit='D')
+        k = (m.index.normalize() - pd.to_timedelta(m.index.dayofweek, unit='D')) if PER == 'W' else m.index.normalize()
         b = pd.DataFrame({'h': h, 'l': l, 'p': np.arange(len(m))}, index=m.index).groupby(k).agg(h=('h', 'max'), l=('l', 'min'), i0=('p', 'first'), n=('p', 'size'))
-        b = b[b.n >= 600]
+        b = b[b.n >= .9 * BARS]
         H, L, I0 = b.h.values, b.l.values, b.i0.values.astype(int)
         fH = [j for j in range(1, len(b) - 1) if H[j] > H[j - 1] and H[j] > H[j + 1]]
         fL = [j for j in range(1, len(b) - 1) if L[j] < L[j - 1] and L[j] < L[j + 1]]
@@ -35,11 +37,11 @@ for s in SYMS:
             if H[ja:jb].max() > FH or L[ja + 1:jb + 1].min() < FL: continue
             R = FH - FL
             if jb + 1 >= len(b): continue
-            s0 = I0[jb + 1]; e0 = min(len(h), s0 + HOR * 672)
+            s0 = I0[jb + 1]; e0 = min(len(h), s0 + HOR * BARS)
             hh, ll = h[s0:e0], l[s0:e0]
             iFL = first(ll < FL); iFH = first(hh > FH)
             cm = np.minimum.accumulate(ll)
-            r = dict(sym=s, side=side, t=b.index[jb], R_pct=R / abs(FL), legs_weeks=jb - ja,
+            r = dict(per=PER, sym=s, side=side, t=b.index[jb], R_pct=R / abs(FL), legs_weeks=jb - ja,
                      cont=iFH < iFL, broke=iFL < iFH, resolved=min(iFH, iFL) < INF)
             # глубина до исхода
             end = min(iFH, iFL, len(ll))
@@ -49,7 +51,7 @@ for s in SYMS:
             ib = first(bounce)
             if ib < iFL and ib < INF:
                 r['react05'] = True; r['depth_react05'] = (FH - cm[ib]) / R
-                r['react05_weeks'] = ib / 672
+                r['react05_weeks'] = ib / BARS
             else:
                 r['react05'] = False
             # вероятности от уровней — только с момента подтверждения фрактала (открытие недели jb+2), без заглядывания вперёд
